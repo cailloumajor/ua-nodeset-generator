@@ -7,7 +7,7 @@ use anyhow::{Context as _, anyhow};
 use askama::Template;
 use duct::cmd;
 use glob::glob;
-use toml2nodeset::ObjectType;
+use ua_nodeset_generator::ObjectType;
 use urn::{Urn, UrnBuilder};
 
 /// Represents the template for generating ModelDesign file.

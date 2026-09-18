@@ -1,5 +1,5 @@
 [package]
-name = "xtask-generate-schema"
+name = "xtask-generate-config-schema"
 version = "0.0.0"
 edition.workspace = true
 publish.workspace = true
@@ -8,4 +8,4 @@ publish.workspace = true
 anyhow.workspace = true
 schemars.workspace = true
 serde_json = "1.0.150"
-toml2nodeset = { path = "../.." }
+ua-nodeset-generator = { path = "../.." }

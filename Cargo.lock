@@ -691,22 +691,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "toml2nodeset"
-version = "1.2.0"
-dependencies = [
- "anyhow",
- "askama",
- "duct",
- "glob",
- "schemars",
- "serde",
- "strum",
- "toml",
- "trycmd",
- "urn",
-]
-
-[[package]]
 name = "toml_datetime"
 version = "1.1.1+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -760,6 +744,22 @@ dependencies = [
  "shlex",
  "snapbox",
  "toml_edit",
+]
+
+[[package]]
+name = "ua-nodeset-generator"
+version = "1.2.0"
+dependencies = [
+ "anyhow",
+ "askama",
+ "duct",
+ "glob",
+ "schemars",
+ "serde",
+ "strum",
+ "toml",
+ "trycmd",
+ "urn",
 ]
 
 [[package]]
@@ -910,13 +910,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "xtask-generate-schema"
+name = "xtask-generate-config-schema"
 version = "0.0.0"
 dependencies = [
  "anyhow",
  "schemars",
  "serde_json",
- "toml2nodeset",
+ "ua-nodeset-generator",
 ]
 
 [[package]]

@@ -1,6 +1,6 @@
 use anyhow::Context;
 use schemars::schema_for;
-use toml2nodeset::ObjectType;
+use ua_nodeset_generator::ObjectType;
 
 fn main() -> anyhow::Result<()> {
     let schema = schema_for!(ObjectType);

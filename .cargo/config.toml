@@ -1,2 +1,2 @@
 [alias]
-generate-schema = "run --quiet --package xtask-generate-schema --"
+generate-config-schema = "run --quiet --package xtask-generate-config-schema --"

@@ -1,23 +1,20 @@
-# toml2nodeset
+# OPC-UA nodeset generator
 
-Turn TOML description of OPC-UA model to nodeset files.
+Generate OPC-UA nodeset from concise description, via Model Design.
 
-This tool turns TOML description of OPC-UA ObjectTypes and their Variable
-components into OPC-UA NodeSet2 files, via an UA Model Design intermediate
-representation.
+This tool turns a description of an OPC-UA namespace into OPC-UA NodeSet2 files,
+via an UA Model Design intermediate representation.
 
 ## Usage
 
-### Version file
-
-The version of the generated nodeset will be taken from a `version.txt` file in
-the provided directory.
-
 ### TOML design files
 
-The source format is one TOML file for each ObjectType to be created. The JSON schema
-from [this link](https://raw.githubusercontent.com/cailloumajor/toml2nodeset/refs/heads/main/schema/opc-object-type.schema.json)
-can be used to help editing those files.
+The source format is a file being concise description of the namespace to be created,
+including ObjectTypes, variables and Object instances. The JSON schema from
+[this link](https://raw.githubusercontent.com/cailloumajor/toml2nodeset/refs/heads/main/schema/config.schema.json)
+can be used to help editing this file.
+
+The configuration structure is described in this [documentation](docs/configuration.md).
 
 #### Schema generation
 
@@ -33,19 +30,12 @@ The tool will generate a Model Design file, with a name prefixed after the final
 component of the provided directory, and will then use UA Model Compiler tool to
 generate NodeSet files, with the same name prefix as the Model Design.
 
-The OPC-UA namespace will be set to an URN, with namespace identifier part set as
-the penultimate component of the provided directory path, and the namespace specific
-part set the same as the ModelDesign prefix described above.
-
 ### Invocation
 
-The tool depends on the [UA Model Compiler](https://github.com/OPCFoundation/UA-ModelCompiler) tool. To ease its installation, it
-is recommended to use [mise](https://mise.jdx.dev/), for which a configuration is
-included in this project.
+The tool depends on the [UA Model Compiler](https://github.com/OPCFoundation/UA-ModelCompiler) tool,
+used via the `dotnet` CLI. To ease its installation, it is recommended to use [mise](https://mise.jdx.dev/),
+for which a configuration is included in this project.
 
 ```ShellSession
-cargo run -- <TARGET_DIRECTORY>
+cargo run -- <DESCRIPTION_FILE>
 ```
-
-The `TARGET_DIRECTORY` argument is the path to the directory containing the TOML
-design files, and where generated files will be written.
