@@ -23,6 +23,8 @@ struct ModelDesign {
     ns_prefix: String,
     /// Namespace URL.
     ns_url: String,
+    /// Symbolic name of the namespace metadata object.
+    ns_metadata_obj_name: String,
     /// Namespace version.
     ns_version: String,
     /// Namespace publication date
@@ -53,12 +55,14 @@ fn main() -> anyhow::Result<()> {
     let namespace: Namespace = yaml_serde::from_reader(input_file_contents)
         .context("Failed to deserialize provided description file")?;
 
+    let ns_metadata_obj_name = format!("{}NamespaceMetadata", ns_prefix.replace('.', ""));
     let ns_pub_date = namespace.publication_date.to_string();
 
     // Create the Model Design template.
     let model_design = ModelDesign {
         ns_prefix: ns_prefix.to_string(),
         ns_url: namespace.namespace_url.clone(),
+        ns_metadata_obj_name,
         ns_version: namespace.version,
         ns_pub_date,
         root_elements: namespace.root_elements,

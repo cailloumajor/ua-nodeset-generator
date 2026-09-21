@@ -60,6 +60,110 @@
     <Alias Alias="AlarmGroupMember">i=16362</Alias>
     <Alias Alias="AlarmSuppressionGroupMember">i=32059</Alias>
   </Aliases>
+  <UAObject NodeId="ns=1;i=1017" BrowseName="1:urn:testns:testmodel" SymbolicName="OpcUaTestModelNamespaceMetadata">
+    <DisplayName>urn:testns:testmodel</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1019</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1020</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1021</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1022</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1023</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1024</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1049</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1050</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1051</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=1018" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=1017" DataType="String">
+    <DisplayName>NamespaceUri</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">urn:testns:testmodel</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1019" BrowseName="NamespaceVersion" ParentNodeId="ns=1;i=1017" DataType="String">
+    <DisplayName>NamespaceVersion</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">12.99.45</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1020" BrowseName="NamespacePublicationDate" ParentNodeId="ns=1;i=1017" DataType="DateTime">
+    <DisplayName>NamespacePublicationDate</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+    <Value>
+      <DateTime xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">1984-12-09T02:32:54Z</DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1021" BrowseName="IsNamespaceSubset" ParentNodeId="ns=1;i=1017" DataType="Boolean">
+    <DisplayName>IsNamespaceSubset</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">false</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1022" BrowseName="StaticNodeIdTypes" ParentNodeId="ns=1;i=1017" DataType="i=256" ValueRank="1" ArrayDimensions="0">
+    <DisplayName>StaticNodeIdTypes</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1023" BrowseName="StaticNumericNodeIdRange" ParentNodeId="ns=1;i=1017" DataType="i=291" ValueRank="1" ArrayDimensions="0">
+    <DisplayName>StaticNumericNodeIdRange</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+    <Value>
+      <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <String>1:2147483647</String>
+      </ListOfString>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1024" BrowseName="StaticStringNodeIdPattern" ParentNodeId="ns=1;i=1017" DataType="String">
+    <DisplayName>StaticStringNodeIdPattern</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1049" BrowseName="DefaultRolePermissions" ParentNodeId="ns=1;i=1017" DataType="i=96" ValueRank="1" ArrayDimensions="0">
+    <DisplayName>DefaultRolePermissions</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1050" BrowseName="DefaultUserRolePermissions" ParentNodeId="ns=1;i=1017" DataType="i=96" ValueRank="1" ArrayDimensions="0">
+    <DisplayName>DefaultUserRolePermissions</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1051" BrowseName="DefaultAccessRestrictions" ParentNodeId="ns=1;i=1017" DataType="i=95">
+    <DisplayName>DefaultAccessRestrictions</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+    </References>
+  </UAVariable>
   <UAObjectType NodeId="ns=1;i=1001" BrowseName="1:ConveyorBeltType">
     <DisplayName>ConveyorBeltType</DisplayName>
     <Description>Represents a conveyor belt segment on the production line</Description>
