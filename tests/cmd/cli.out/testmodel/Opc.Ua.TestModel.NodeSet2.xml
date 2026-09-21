@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="[..]" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="1984-12-09T02:32:54Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
   <NamespaceUris>
     <Uri>urn:testns:testmodel</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri="urn:testns:testmodel" Version="12.99.45" PublicationDate="[..]" ModelVersion="12.99.45" />
+    <Model ModelUri="urn:testns:testmodel" Version="12.99.45" PublicationDate="1984-12-09T02:32:54Z" ModelVersion="12.99.45" />
   </Models>
   <Aliases>
     <Alias Alias="Boolean">i=1</Alias>

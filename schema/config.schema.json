@@ -8,6 +8,11 @@
       "description": "Namespace URL.",
       "type": "string"
     },
+    "publication_date": {
+      "description": "Namespace publication date and time.",
+      "type": "string",
+      "format": "date-time"
+    },
     "root_elements": {
       "description": "Root elements of this namespace.",
       "type": "array",
@@ -55,6 +60,7 @@
   "required": [
     "namespace_url",
     "version",
+    "publication_date",
     "root_elements"
   ],
   "$defs": {

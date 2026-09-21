@@ -7,6 +7,7 @@ Source description of an OPC-UA namespace for ModelDesign XML generation.
 | Property | Type | Required | Possible values | Description |
 | -------- | ---- | -------- | --------------- | ----------- |
 | namespace_url | `string` | ✅ | string | Namespace URL. |
+| publication_date | `string` | ✅ | Format: [`date-time`](https://json-schema.org/understanding-json-schema/reference/string#built-in-formats) | Namespace publication date and time. |
 | root_elements | `array` | ✅ | [ObjectInstance](#objectinstance) or [ObjectType](#objecttype) | Root elements of this namespace. |
 | version | `string` | ✅ | string | Version to set on the generated nodeset. |
 

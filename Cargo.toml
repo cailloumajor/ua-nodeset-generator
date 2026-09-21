@@ -14,13 +14,14 @@ publish = false
 
 [workspace.dependencies]
 anyhow = "1.0.103"
-schemars = "1.2.1"
+schemars = { version = "1.2.1", features = ["jiff02"] }
 
 [dependencies]
 anyhow.workspace = true
 askama = "0.16.0"
 clap = { version = "4.6.7", features = ["derive"] }
 duct = "1.1.1"
+jiff = { version = "0.2.37", features = ["serde"] }
 schemars.workspace = true
 serde = { version = "1.0.228", features = ["derive"] }
 strum = { version = "0.28.0", features = ["derive"] }

@@ -23,6 +23,10 @@ struct ModelDesign {
     ns_prefix: String,
     /// Namespace URL.
     ns_url: String,
+    /// Namespace version.
+    ns_version: String,
+    /// Namespace publication date
+    ns_pub_date: String,
     /// Root elements of this namespace.
     root_elements: Vec<RootElement>,
 }
@@ -49,10 +53,14 @@ fn main() -> anyhow::Result<()> {
     let namespace: Namespace = yaml_serde::from_reader(input_file_contents)
         .context("Failed to deserialize provided description file")?;
 
+    let ns_pub_date = namespace.publication_date.to_string();
+
     // Create the Model Design template.
     let model_design = ModelDesign {
         ns_prefix: ns_prefix.to_string(),
         ns_url: namespace.namespace_url.clone(),
+        ns_version: namespace.version,
+        ns_pub_date,
         root_elements: namespace.root_elements,
     };
 
@@ -96,9 +104,6 @@ fn main() -> anyhow::Result<()> {
         // Suppress unwanted generated output.
         "-suppress",
         "PredefinedNodes,Constants,JsonSchema,Classes,DataTypes",
-        // Version of the generated NodeSet.
-        "-mv",
-        namespace.version,
     );
     compile_command
         .run()

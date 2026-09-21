@@ -8,6 +8,8 @@
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
   xmlns="urn:testns:testmodel"
   TargetNamespace="urn:testns:testmodel"
+  TargetVersion="12.99.45"
+  TargetPublicationDate="1984-12-09T02:32:54Z"
 >
 
   <opc:Namespaces>

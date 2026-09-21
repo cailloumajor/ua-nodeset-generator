@@ -2,6 +2,7 @@ $schema: ../../../../schema/config.schema.json
 
 namespace_url: urn:testns:testmodel
 version: 12.99.45
+publication_date: 1984-12-09T04:32:54+02:00
 
 root_elements:
   - type: object_type

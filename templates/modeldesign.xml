@@ -8,6 +8,8 @@
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
   xmlns="{{ ns_url }}"
   TargetNamespace="{{ ns_url }}"
+  TargetVersion="{{ ns_version }}"
+  TargetPublicationDate="{{ ns_pub_date }}"
 >
 
   <opc:Namespaces>

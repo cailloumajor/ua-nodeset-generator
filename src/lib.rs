@@ -1,3 +1,4 @@
+use jiff::Timestamp;
 use schemars::JsonSchema;
 use serde::Deserialize;
 use strum::Display;
@@ -9,6 +10,8 @@ pub struct Namespace {
     pub namespace_url: String,
     /// Version to set on the generated nodeset.
     pub version: String,
+    /// Namespace publication date and time.
+    pub publication_date: Timestamp,
     /// Root elements of this namespace.
     pub root_elements: Vec<RootElement>,
 }
