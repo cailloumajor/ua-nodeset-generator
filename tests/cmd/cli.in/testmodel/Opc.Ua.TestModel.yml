@@ -1,0 +1,46 @@
+$schema: ../../../../schema/config.schema.json
+
+namespace_url: urn:testns:testmodel
+version: 12.99.45
+
+root_elements:
+  - type: object_type
+    name: ConveyorBeltType
+    description: Represents a conveyor belt segment on the production line
+    variables:
+      - name: BeltSpeed
+        description: Belt linear speed in m/s
+        data_type: Double
+        access_level: ReadWrite
+      - name: MotorTemperature
+        description: Motor temperature in °C
+        data_type: Float
+        access_level: Read
+      - name: SensorReadings
+        description: Raw readings from 4 sensors, 2 samples each
+        data_type: Int32
+        access_level: Read
+        array_dimensions: [4, 2]
+  - type: object_type
+    name: MotorType
+    description: Represents a production line motor
+    variables:
+      - name: Speed
+        description: Motor speed in rpm
+        data_type: Double
+        access_level: Write
+      - name: IsRunning
+        description: True if the motor is currently engaged
+        data_type: Boolean
+        access_level: Read
+      - name: AlarmCodes
+        description: Active alarm codes
+        data_type: Int32
+        access_level: ReadWrite
+        array_dimensions: [10]
+  - type: object_instance
+    name: GlobalConveyorBelt
+    object_type: ConveyorBeltType
+  - type: object_instance
+    name: TheUniqueMotor
+    object_type: MotorType

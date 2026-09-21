@@ -2,6 +2,55 @@ use schemars::JsonSchema;
 use serde::Deserialize;
 use strum::Display;
 
+/// Source description of an OPC-UA namespace for ModelDesign XML generation.
+#[derive(Deserialize, JsonSchema)]
+pub struct Namespace {
+    /// Namespace URL.
+    pub namespace_url: String,
+    /// Version to set on the generated nodeset.
+    pub version: String,
+    /// Root elements of this namespace.
+    pub root_elements: Vec<RootElement>,
+}
+
+/// A namespace root element.
+// The schema is inlined at its use site and each variant is given a title, otherwise the
+// documentation generator renders this enum as an empty definition: it only documents the
+// properties of a definition, never the variants of a `oneOf`.
+#[derive(Deserialize, JsonSchema)]
+#[schemars(inline)]
+#[serde(rename_all = "snake_case", tag = "type")]
+pub enum RootElement {
+    /// ObjectType description.
+    #[schemars(title = "ObjectTypeElement")]
+    ObjectType(ObjectType),
+    /// ObjectType instance description.
+    #[schemars(title = "ObjectInstanceElement")]
+    ObjectInstance(ObjectInstance),
+}
+
+impl RootElement {
+    /// If the [`RootElement`] is an object type, return a reference to the associated
+    /// [`ObjectType`]. Returns [`None`] otherwise.
+    pub fn as_object_type(&self) -> Option<&ObjectType> {
+        if let Self::ObjectType(t) = self {
+            Some(t)
+        } else {
+            None
+        }
+    }
+
+    /// If the [`RootElement`] is an object instance, return a reference to the associated
+    /// [`ObjectInstance`]. Returns [`None`] otherwise.
+    pub fn as_object_instance(&self) -> Option<&ObjectInstance> {
+        if let Self::ObjectInstance(i) = self {
+            Some(i)
+        } else {
+            None
+        }
+    }
+}
+
 /// Source description of an OPC-UA ObjectType for ModelDesign XML generation.
 #[derive(Deserialize, JsonSchema)]
 pub struct ObjectType {
@@ -10,7 +59,7 @@ pub struct ObjectType {
     /// The description of the ObjectType.
     pub description: String,
     /// The list of variables found in the ObjectDesign modelization.
-    pub variable: Vec<Variable>,
+    pub variables: Vec<Variable>,
 }
 
 /// Represents the modelization for a variable member of an ObjectType.
@@ -62,4 +111,13 @@ pub enum AccessLevel {
     Read,
     Write,
     ReadWrite,
+}
+
+/// An instance of ObjectType.
+#[derive(Deserialize, JsonSchema)]
+pub struct ObjectInstance {
+    /// Name of the variable instance.
+    pub name: String,
+    /// Name of the object type for this instance.
+    pub object_type: String,
 }

@@ -1,0 +1,16 @@
+ConveyorBeltType,1001,ObjectType
+ConveyorBeltType_BeltSpeed,1002,Variable
+ConveyorBeltType_MotorTemperature,1003,Variable
+ConveyorBeltType_SensorReadings,1004,Variable
+MotorType,1005,ObjectType
+MotorType_Speed,1006,Variable
+MotorType_IsRunning,1007,Variable
+MotorType_AlarmCodes,1008,Variable
+GlobalConveyorBelt,1009,Object
+GlobalConveyorBelt_BeltSpeed,1010,Variable
+GlobalConveyorBelt_MotorTemperature,1011,Variable
+GlobalConveyorBelt_SensorReadings,1012,Variable
+TheUniqueMotor,1013,Object
+TheUniqueMotor_Speed,1014,Variable
+TheUniqueMotor_IsRunning,1015,Variable
+TheUniqueMotor_AlarmCodes,1016,Variable

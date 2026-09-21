@@ -134,4 +134,72 @@
       <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
     </References>
   </UAVariable>
+  <UAObject NodeId="ns=1;i=1009" BrowseName="1:GlobalConveyorBelt">
+    <DisplayName>GlobalConveyorBelt</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1012</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1001</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=1010" BrowseName="1:BeltSpeed" ParentNodeId="ns=1;i=1009" DataType="Double" AccessLevel="3">
+    <DisplayName>BeltSpeed</DisplayName>
+    <Description>Belt linear speed in m/s</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1011" BrowseName="1:MotorTemperature" ParentNodeId="ns=1;i=1009" DataType="Float">
+    <DisplayName>MotorTemperature</DisplayName>
+    <Description>Motor temperature in °C</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1012" BrowseName="1:SensorReadings" ParentNodeId="ns=1;i=1009" DataType="Int32" ValueRank="1" ArrayDimensions="4,2">
+    <DisplayName>SensorReadings</DisplayName>
+    <Description>Raw readings from 4 sensors, 2 samples each</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=1013" BrowseName="1:TheUniqueMotor">
+    <DisplayName>TheUniqueMotor</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=1014</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1015</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1016</Reference>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1005</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=1014" BrowseName="1:Speed" ParentNodeId="ns=1;i=1013" DataType="Double" AccessLevel="2">
+    <DisplayName>Speed</DisplayName>
+    <Description>Motor speed in rpm</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1015" BrowseName="1:IsRunning" ParentNodeId="ns=1;i=1013" DataType="Boolean">
+    <DisplayName>IsRunning</DisplayName>
+    <Description>True if the motor is currently engaged</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=1016" BrowseName="1:AlarmCodes" ParentNodeId="ns=1;i=1013" DataType="Int32" ValueRank="1" ArrayDimensions="10" AccessLevel="3">
+    <DisplayName>AlarmCodes</DisplayName>
+    <Description>Active alarm codes</Description>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+    </References>
+  </UAVariable>
 </UANodeSet>

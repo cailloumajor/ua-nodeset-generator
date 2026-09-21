@@ -11,7 +11,7 @@
 >
 
   <opc:Namespaces>
-    <opc:Namespace Prefix="testmodel">urn:testns:testmodel</opc:Namespace>
+    <opc:Namespace Prefix="Opc.Ua.TestModel">urn:testns:testmodel</opc:Namespace>
   </opc:Namespaces>
 
   <opc:ObjectType SymbolicName="ConveyorBeltType" BaseType="ua:BaseObjectType">
@@ -43,5 +43,23 @@
       </opc:Property>
     </opc:Children>
   </opc:ObjectType>
+
+  <opc:Object SymbolicName="GlobalConveyorBelt" TypeDefinition="ConveyorBeltType">
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+  </opc:Object>
+
+  <opc:Object SymbolicName="TheUniqueMotor" TypeDefinition="MotorType">
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+  </opc:Object>
 
 </opc:ModelDesign>

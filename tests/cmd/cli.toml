@@ -1,5 +1,5 @@
 #:schema https://github.com/assert-rs/snapbox/raw/refs/heads/main/crates/trycmd/schema.json
 
-bin.name = "toml2nodeset"
-args = ["testns/testmodel"]
+bin.name = "ua-nodeset-generator"
+args = ["testmodel/Opc.Ua.TestModel.yml"]
 status = "success"

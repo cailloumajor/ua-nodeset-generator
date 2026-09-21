@@ -1,29 +1,61 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ObjectType",
-  "description": "Source description of an OPC-UA ObjectType for ModelDesign XML generation.",
+  "title": "Namespace",
+  "description": "Source description of an OPC-UA namespace for ModelDesign XML generation.",
   "type": "object",
   "properties": {
-    "description": {
-      "description": "The description of the ObjectType.",
+    "namespace_url": {
+      "description": "Namespace URL.",
       "type": "string"
     },
-    "name": {
-      "description": "The name of the ObjectType (e.g. MotorType).",
-      "type": "string"
-    },
-    "variable": {
-      "description": "The list of variables found in the ObjectDesign modelization.",
+    "root_elements": {
+      "description": "Root elements of this namespace.",
       "type": "array",
       "items": {
-        "$ref": "#/$defs/Variable"
+        "description": "A namespace root element.",
+        "oneOf": [
+          {
+            "title": "ObjectTypeElement",
+            "description": "ObjectType description.",
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "object_type"
+              }
+            },
+            "$ref": "#/$defs/ObjectType",
+            "required": [
+              "type"
+            ]
+          },
+          {
+            "title": "ObjectInstanceElement",
+            "description": "ObjectType instance description.",
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "object_instance"
+              }
+            },
+            "$ref": "#/$defs/ObjectInstance",
+            "required": [
+              "type"
+            ]
+          }
+        ]
       }
+    },
+    "version": {
+      "description": "Version to set on the generated nodeset.",
+      "type": "string"
     }
   },
   "required": [
-    "name",
-    "description",
-    "variable"
+    "namespace_url",
+    "version",
+    "root_elements"
   ],
   "$defs": {
     "AccessLevel": {
@@ -33,6 +65,50 @@
         "Read",
         "Write",
         "ReadWrite"
+      ]
+    },
+    "ObjectInstance": {
+      "description": "An instance of ObjectType.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the variable instance.",
+          "type": "string"
+        },
+        "object_type": {
+          "description": "Name of the object type for this instance.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "object_type"
+      ]
+    },
+    "ObjectType": {
+      "description": "Source description of an OPC-UA ObjectType for ModelDesign XML generation.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "The description of the ObjectType.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the ObjectType (e.g. MotorType).",
+          "type": "string"
+        },
+        "variables": {
+          "description": "The list of variables found in the ObjectDesign modelization.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Variable"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "variables"
       ]
     },
     "ScalarDataType": {

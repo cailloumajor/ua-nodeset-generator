@@ -1,14 +1,14 @@
-# ObjectType
+# Namespace
 
-Source description of an OPC-UA ObjectType for ModelDesign XML generation.
+Source description of an OPC-UA namespace for ModelDesign XML generation.
 
 ### Type: `object`
 
 | Property | Type | Required | Possible values | Description |
 | -------- | ---- | -------- | --------------- | ----------- |
-| description | `string` | ✅ | string | The description of the ObjectType. |
-| name | `string` | ✅ | string | The name of the ObjectType (e.g. MotorType). |
-| variable | `array` | ✅ | [Variable](#variable) | The list of variables found in the ObjectDesign modelization. |
+| namespace_url | `string` | ✅ | string | Namespace URL. |
+| root_elements | `array` | ✅ | [ObjectInstance](#objectinstance) or [ObjectType](#objecttype) | Root elements of this namespace. |
+| version | `string` | ✅ | string | Version to set on the generated nodeset. |
 
 
 ---
@@ -26,6 +26,29 @@ This is a subset of [available levels].
 #### Type: `string`
 
 **Possible Values:** `Read` or `Write` or `ReadWrite`
+
+## ObjectInstance
+
+An instance of ObjectType.
+
+#### Type: `object`
+
+| Property | Type | Required | Possible values | Description |
+| -------- | ---- | -------- | --------------- | ----------- |
+| name | `string` | ✅ | string | Name of the variable instance. |
+| object_type | `string` | ✅ | string | Name of the object type for this instance. |
+
+## ObjectType
+
+Source description of an OPC-UA ObjectType for ModelDesign XML generation.
+
+#### Type: `object`
+
+| Property | Type | Required | Possible values | Description |
+| -------- | ---- | -------- | --------------- | ----------- |
+| description | `string` | ✅ | string | The description of the ObjectType. |
+| name | `string` | ✅ | string | The name of the ObjectType (e.g. MotorType). |
+| variables | `array` | ✅ | [Variable](#variable) | The list of variables found in the ObjectDesign modelization. |
 
 ## ScalarDataType
 

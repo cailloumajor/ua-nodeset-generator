@@ -1,84 +1,63 @@
-use std::ffi::OsStr;
+use std::fs;
 use std::fs::File;
 use std::path::PathBuf;
-use std::{env, fs};
 
-use anyhow::{Context as _, anyhow};
+use anyhow::Context as _;
 use askama::Template;
+use clap::Parser;
 use duct::cmd;
-use glob::glob;
-use ua_nodeset_generator::ObjectType;
-use urn::{Urn, UrnBuilder};
+use ua_nodeset_generator::{Namespace, RootElement};
+
+#[derive(Parser)]
+#[command(about, version)]
+struct Cli {
+    /// Path of the namespace description file (JSON5 format).
+    description_file: PathBuf,
+}
 
 /// Represents the template for generating ModelDesign file.
 #[derive(Template)]
 #[template(path = "modeldesign.xml")]
 struct ModelDesign {
-    /// The namespace URN.
-    ns_urn: Urn,
-    /// The list of object types.
-    object_types: Vec<ObjectType>,
+    /// Namespace prefix.
+    ns_prefix: String,
+    /// Namespace URL.
+    ns_url: String,
+    /// Root elements of this namespace.
+    root_elements: Vec<RootElement>,
 }
 
 fn main() -> anyhow::Result<()> {
-    // Take the target directory from the first positional argument.
-    let target_dir = env::args_os()
-        .nth(1)
-        .map(PathBuf::from)
-        .context("Failed to get the target directory from first positional argument")?;
+    let args = Cli::parse();
 
-    let mut target_path_components = target_dir.iter().map(OsStr::to_str);
-    // Get the model name from the last component of the target path.
-    let model_name = target_path_components
-        .next_back()
-        .flatten()
-        .context("Failed to get last component of target path")?;
-    // Get the namespace identifier for the UA namespace URN from the last component
-    // of the target path.
-    let ns_urn_nid = target_path_components
-        .next_back()
-        .flatten()
-        .context("Failed to get penultimate component of target path")?;
+    // Take the target directory from the description file path.
+    let target_dir = args
+        .description_file
+        .parent()
+        .context("Failed to get the parent directory of the provided description file")?;
 
-    // Read the version.
-    let nodeset_version = fs::read_to_string(target_dir.join("version.txt"))
-        .map(|raw| raw.trim().to_owned())
-        .context("Failed to read the version file")?;
+    // Get the namespace prefix.
+    let ns_prefix = args
+        .description_file
+        .file_stem()
+        .context("Failed to get the file name stem of the provided description file")?
+        .to_string_lossy();
 
-    // Get an iterator over TOML design files.
-    let toml_paths = glob(target_dir.join("*.toml").to_string_lossy().as_ref())
-        .context("Failed to create TOML files glob")?
-        .collect::<Result<Vec<_>, _>>()
-        .context("Failed to get TOML file glob entry")?;
-
-    if toml_paths.is_empty() {
-        return Err(anyhow!("No TOML file was found"));
-    }
-
-    // Get ObjectType structures from TOML files.
-    let object_types = toml_paths
-        .into_iter()
-        .map(|toml_path| {
-            let input_file_contents = fs::read_to_string(&toml_path)
-                .with_context(|| format!("Failed to read {}", toml_path.display()))?;
-            let object_type: ObjectType = toml::from_str(&input_file_contents)
-                .with_context(|| format!("Failed to deserialize {}", toml_path.display()))?;
-            Ok(object_type)
-        })
-        .collect::<Result<Vec<_>, anyhow::Error>>()?;
-
-    let ns_urn = UrnBuilder::new(ns_urn_nid, model_name)
-        .build()
-        .context("Failed to build OPC-UA namespace URN")?;
+    // Get the namespace description from the provided file.
+    let input_file_contents = fs::File::open(&args.description_file)
+        .context("Failed to open provided description file")?;
+    let namespace: Namespace = yaml_serde::from_reader(input_file_contents)
+        .context("Failed to deserialize provided description file")?;
 
     // Create the Model Design template.
     let model_design = ModelDesign {
-        ns_urn,
-        object_types,
+        ns_prefix: ns_prefix.to_string(),
+        ns_url: namespace.namespace_url.clone(),
+        root_elements: namespace.root_elements,
     };
 
-    // Write the model design file.
-    let model_design_file_path = target_dir.join(format!("{model_name}Model.xml"));
+    // Create and write the model design file.
+    let model_design_file_path = target_dir.join(format!("{ns_prefix}.Model.xml"));
     let mut model_design_file =
         File::create(&model_design_file_path).context("Failed to create Model Design file")?;
     model_design
@@ -92,7 +71,7 @@ fn main() -> anyhow::Result<()> {
         .context("Failed to run `dotnet tool restore`")?;
 
     // Compile the Model Design.
-    let identifier_filename = format!("{model_name}Model.csv");
+    let identifier_filename = format!("{ns_prefix}.Model.csv");
     let compile_command = cmd!(
         "dotnet",
         "tool",
@@ -119,7 +98,7 @@ fn main() -> anyhow::Result<()> {
         "PredefinedNodes,Constants,JsonSchema,Classes,DataTypes",
         // Version of the generated NodeSet.
         "-mv",
-        nodeset_version,
+        namespace.version,
     );
     compile_command
         .run()

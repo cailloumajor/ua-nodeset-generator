@@ -6,20 +6,21 @@
   xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
   xmlns:ua="http://opcfoundation.org/UA/"
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
-  xmlns="{{ ns_urn }}"
-  TargetNamespace="{{ ns_urn }}"
+  xmlns="{{ ns_url }}"
+  TargetNamespace="{{ ns_url }}"
 >
 
   <opc:Namespaces>
-    <opc:Namespace Prefix="{{ ns_urn.nss().replace(':', ".") }}">{{ ns_urn }}</opc:Namespace>
+    <opc:Namespace Prefix="{{ ns_prefix }}">{{ ns_url }}</opc:Namespace>
   </opc:Namespaces>
 
-{%- for object_type in object_types %}
+{%- for root_element in root_elements %}
+  {%- if let Some(object_type) = root_element.as_object_type() %}
 
   <opc:ObjectType SymbolicName="{{ object_type.name }}" BaseType="ua:BaseObjectType">
     <opc:Description>{{ object_type.description }}</opc:Description>
     <opc:Children>
-{%- for var in object_type.variable %}
+    {%- for var in object_type.variables %}
       <opc:Property SymbolicName="{{ var.name }}" DataType="ua:{{ var.data_type }}" AccessLevel="{{ var.access_level }}" {# Keep the trailing space #}
         {%- if let Some(dimensions) = var.array_dimensions -%}
           ValueRank="Array" ArrayDimensions="{{ dimensions | join(',') }}"
@@ -27,9 +28,21 @@
       >
         <opc:Description>{{ var.description }}</opc:Description>
       </opc:Property>
-{%- endfor %}
+    {%- endfor %}
     </opc:Children>
   </opc:ObjectType>
+  {%- else if let Some(object_instance) = root_element.as_object_instance() %}
+
+  <opc:Object SymbolicName="{{ object_instance.name }}" TypeDefinition="{{ object_instance.object_type }}">
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
+        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+  </opc:Object>
+
+  {%- endif %}
 {%- endfor %}
 
 </opc:ModelDesign>
