@@ -11,8 +11,7 @@ via an UA Model Design intermediate representation.
 
 The source format is a YAML file describing the namespace to be created,
 including ObjectTypes, variables and Object instances. The JSON schema from
-[this link](https://raw.githubusercontent.com/cailloumajor/toml2nodeset/refs/heads/main/schema/config.schema.json)
-can be used to help editing this file.
+[this link](schema/config.schema.json) can be used to help editing this file.
 
 The configuration structure is described in this [documentation](docs/configuration.md).
 
