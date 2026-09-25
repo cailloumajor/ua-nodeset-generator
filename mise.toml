@@ -19,9 +19,6 @@ tombi = "latest"
 typos = "latest"
 zizmor = "latest"
 
-[hooks]
-enter = "mise outdated --local --silent"
-
 [tasks.test]
 description = "Run tests"
 run = "cargo test"
