@@ -16,6 +16,7 @@
     <opc:Namespace Prefix="{{ ns_prefix }}">{{ ns_url }}</opc:Namespace>
   </opc:Namespaces>
 
+  <!-- Namespace metadata according to OPC-UA v1.04. -->
   <opc:Object SymbolicName="{{ ns_metadata_obj_name }}" TypeDefinition="ua:NamespaceMetadataType" PartNo="12">
     <opc:BrowseName>{{ ns_url }}</opc:BrowseName>
     <opc:Children>

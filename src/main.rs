@@ -33,6 +33,14 @@ struct ModelDesign {
     root_elements: Vec<RootElement>,
 }
 
+/// Represents the template for the node identifiers files.
+#[derive(Template)]
+#[template(path = "node_identifiers.csv", escape = "none")]
+struct NodeIdentifiers {
+    /// Symbolic name of the namespace metadata object.
+    ns_metadata_obj_name: String,
+}
+
 fn main() -> anyhow::Result<()> {
     let args = Cli::parse();
 
@@ -62,7 +70,7 @@ fn main() -> anyhow::Result<()> {
     let model_design = ModelDesign {
         ns_prefix: ns_prefix.to_string(),
         ns_url: namespace.namespace_url.clone(),
-        ns_metadata_obj_name,
+        ns_metadata_obj_name: ns_metadata_obj_name.clone(),
         ns_version: namespace.version,
         ns_pub_date,
         root_elements: namespace.root_elements,
@@ -76,6 +84,18 @@ fn main() -> anyhow::Result<()> {
         .write_into(&mut model_design_file)
         .context("Failed to write Model Design file")?;
 
+    // Create and fill the node identifiers numbering file from template.
+    let node_identifiers = NodeIdentifiers {
+        ns_metadata_obj_name,
+    };
+    let identifier_filename = format!("{ns_prefix}.Model.csv");
+    let identifier_file_path = target_dir.join(identifier_filename);
+    let mut identifier_file =
+        File::create(&identifier_file_path).context("Failed to create node identifiers file")?;
+    node_identifiers
+        .write_into(&mut identifier_file)
+        .context("Failed to write node identifiers file")?;
+
     // Ensure model compiler tool availability.
     let restore_command = cmd!("dotnet", "tool", "restore");
     restore_command
@@ -83,7 +103,6 @@ fn main() -> anyhow::Result<()> {
         .context("Failed to run `dotnet tool restore`")?;
 
     // Compile the Model Design.
-    let identifier_filename = format!("{ns_prefix}.Model.csv");
     let compile_command = cmd!(
         "dotnet",
         "tool",
@@ -98,13 +117,13 @@ fn main() -> anyhow::Result<()> {
         &target_dir,
         // Path to the identifier file (will be created if needed).
         "-cg",
-        target_dir.join(identifier_filename),
+        identifier_file_path,
         // The first node ID identifier to use.
         "-id",
         "1000",
-        // OPC-UA v1.05.
+        // OPC-UA v1.04.
         "-version",
-        "v105",
+        "v104",
         // Suppress unwanted generated output.
         "-suppress",
         "PredefinedNodes,Constants,JsonSchema,Classes,DataTypes",

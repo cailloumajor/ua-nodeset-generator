@@ -1,0 +1,36 @@
+{%- let mut node_id = 10000.. -%}
+{# Namespace metadata nodes according to OPC-UA v1.04. #}
+{{ ns_metadata_obj_name }},{{ node_id.next().unwrap() }},Object
+{{ ns_metadata_obj_name }}_NamespaceUri,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceVersion,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespacePublicationDate,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_IsNamespaceSubset,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_StaticNodeIdTypes,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_StaticNumericNodeIdRange,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_StaticStringNodeIdPattern,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile,{{ node_id.next().unwrap() }},Object
+{{ ns_metadata_obj_name }}_NamespaceFile_Size,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Writable,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_UserWritable,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_OpenCount,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_MimeType,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_MaxByteStringLength,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Open,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_Open_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Open_OutputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Close,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_Close_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Read,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_Read_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Read_OutputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_Write,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_Write_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_GetPosition,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_GetPosition_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_GetPosition_OutputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_SetPosition,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_NamespaceFile_SetPosition_InputArguments,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_NamespaceFile_ExportNamespace,{{ node_id.next().unwrap() }},Method
+{{ ns_metadata_obj_name }}_DefaultRolePermissions,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_DefaultUserRolePermissions,{{ node_id.next().unwrap() }},Variable
+{{ ns_metadata_obj_name }}_DefaultAccessRestrictions,{{ node_id.next().unwrap() }},Variable
