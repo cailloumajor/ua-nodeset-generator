@@ -42,9 +42,9 @@
       <opc:Property SymbolicName="ua:StaticNodeIdTypes" DataType="ua:IdType" ValueRank="Array" />
       <opc:Property SymbolicName="ua:StaticNumericNodeIdRange" DataType="ua:NumericRange" ValueRank="Array" />
       <opc:Property SymbolicName="ua:StaticStringNodeIdPattern" DataType="ua:String" />
-      <opc:Property SymbolicName="ua:DefaultRolePermissions" ModellingRule="Mandatory" />
-      <opc:Property SymbolicName="ua:DefaultUserRolePermissions" ModellingRule="Mandatory" />
-      <opc:Property SymbolicName="ua:DefaultAccessRestrictions" ModellingRule="Mandatory" />
+      <opc:Property SymbolicName="ua:DefaultRolePermissions"/>
+      <opc:Property SymbolicName="ua:DefaultUserRolePermissions"/>
+      <opc:Property SymbolicName="ua:DefaultAccessRestrictions"/>
     </opc:Children>
     <opc:References>
       <opc:Reference IsInverse="true">
