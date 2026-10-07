@@ -60,75 +60,75 @@
     <Alias Alias="AlarmGroupMember">i=16362</Alias>
     <Alias Alias="AlarmSuppressionGroupMember">i=32059</Alias>
   </Aliases>
-  <UAObject NodeId="ns=1;i=1017" BrowseName="1:urn:testns:testmodel" SymbolicName="OpcUaTestModelNamespaceMetadata">
+  <UAObject NodeId="ns=1;i=1001" BrowseName="1:urn:testns:testmodel" SymbolicName="OpcUaTestModelNamespaceMetadata">
     <DisplayName>urn:testns:testmodel</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1018</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1019</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1020</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1021</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1022</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1023</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1024</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1049</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1050</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1051</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1033</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1034</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1035</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
       <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
     </References>
   </UAObject>
-  <UAVariable NodeId="ns=1;i=1018" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=1017" DataType="String">
+  <UAVariable NodeId="ns=1;i=1002" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=1001" DataType="String">
     <DisplayName>NamespaceUri</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
     <Value>
       <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">urn:testns:testmodel</String>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1019" BrowseName="NamespaceVersion" ParentNodeId="ns=1;i=1017" DataType="String">
+  <UAVariable NodeId="ns=1;i=1003" BrowseName="NamespaceVersion" ParentNodeId="ns=1;i=1001" DataType="String">
     <DisplayName>NamespaceVersion</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
     <Value>
       <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">12.99.45</String>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1020" BrowseName="NamespacePublicationDate" ParentNodeId="ns=1;i=1017" DataType="DateTime">
+  <UAVariable NodeId="ns=1;i=1004" BrowseName="NamespacePublicationDate" ParentNodeId="ns=1;i=1001" DataType="DateTime">
     <DisplayName>NamespacePublicationDate</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
     <Value>
       <DateTime xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">1984-12-09T02:32:54Z</DateTime>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1021" BrowseName="IsNamespaceSubset" ParentNodeId="ns=1;i=1017" DataType="Boolean">
+  <UAVariable NodeId="ns=1;i=1005" BrowseName="IsNamespaceSubset" ParentNodeId="ns=1;i=1001" DataType="Boolean">
     <DisplayName>IsNamespaceSubset</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
     <Value>
       <Boolean xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">false</Boolean>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1022" BrowseName="StaticNodeIdTypes" ParentNodeId="ns=1;i=1017" DataType="i=256" ValueRank="1" ArrayDimensions="0">
+  <UAVariable NodeId="ns=1;i=1006" BrowseName="StaticNodeIdTypes" ParentNodeId="ns=1;i=1001" DataType="i=256" ValueRank="1" ArrayDimensions="0">
     <DisplayName>StaticNodeIdTypes</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1023" BrowseName="StaticNumericNodeIdRange" ParentNodeId="ns=1;i=1017" DataType="i=291" ValueRank="1" ArrayDimensions="0">
+  <UAVariable NodeId="ns=1;i=1007" BrowseName="StaticNumericNodeIdRange" ParentNodeId="ns=1;i=1001" DataType="i=291" ValueRank="1" ArrayDimensions="0">
     <DisplayName>StaticNumericNodeIdRange</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
     <Value>
       <ListOfString xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
@@ -136,174 +136,174 @@
       </ListOfString>
     </Value>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1024" BrowseName="StaticStringNodeIdPattern" ParentNodeId="ns=1;i=1017" DataType="String">
+  <UAVariable NodeId="ns=1;i=1008" BrowseName="StaticStringNodeIdPattern" ParentNodeId="ns=1;i=1001" DataType="String">
     <DisplayName>StaticStringNodeIdPattern</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1049" BrowseName="DefaultRolePermissions" ParentNodeId="ns=1;i=1017" DataType="i=96" ValueRank="1" ArrayDimensions="0">
+  <UAVariable NodeId="ns=1;i=1033" BrowseName="DefaultRolePermissions" ParentNodeId="ns=1;i=1001" DataType="i=96" ValueRank="1" ArrayDimensions="0">
     <DisplayName>DefaultRolePermissions</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1050" BrowseName="DefaultUserRolePermissions" ParentNodeId="ns=1;i=1017" DataType="i=96" ValueRank="1" ArrayDimensions="0">
+  <UAVariable NodeId="ns=1;i=1034" BrowseName="DefaultUserRolePermissions" ParentNodeId="ns=1;i=1001" DataType="i=96" ValueRank="1" ArrayDimensions="0">
     <DisplayName>DefaultUserRolePermissions</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1051" BrowseName="DefaultAccessRestrictions" ParentNodeId="ns=1;i=1017" DataType="i=95">
+  <UAVariable NodeId="ns=1;i=1035" BrowseName="DefaultAccessRestrictions" ParentNodeId="ns=1;i=1001" DataType="i=95">
     <DisplayName>DefaultAccessRestrictions</DisplayName>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
-  <UAObjectType NodeId="ns=1;i=1001" BrowseName="1:ConveyorBeltType">
+  <UAObjectType NodeId="ns=1;i=1038" BrowseName="1:ConveyorBeltType">
     <DisplayName>ConveyorBeltType</DisplayName>
     <Description>Represents a conveyor belt segment on the production line</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1002</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1003</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1039</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1040</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1041</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId="ns=1;i=1002" BrowseName="1:BeltSpeed" ParentNodeId="ns=1;i=1001" DataType="Double" AccessLevel="3">
+  <UAVariable NodeId="ns=1;i=1039" BrowseName="1:BeltSpeed" ParentNodeId="ns=1;i=1038" DataType="Double" AccessLevel="3">
     <DisplayName>BeltSpeed</DisplayName>
     <Description>Belt linear speed in m/s</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1038</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1003" BrowseName="1:MotorTemperature" ParentNodeId="ns=1;i=1001" DataType="Float">
+  <UAVariable NodeId="ns=1;i=1040" BrowseName="1:MotorTemperature" ParentNodeId="ns=1;i=1038" DataType="Float">
     <DisplayName>MotorTemperature</DisplayName>
     <Description>Motor temperature in °C</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1038</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1004" BrowseName="1:SensorReadings" ParentNodeId="ns=1;i=1001" DataType="Int32" ValueRank="1" ArrayDimensions="4,2">
+  <UAVariable NodeId="ns=1;i=1041" BrowseName="1:SensorReadings" ParentNodeId="ns=1;i=1038" DataType="Int32" ValueRank="1" ArrayDimensions="4,2">
     <DisplayName>SensorReadings</DisplayName>
     <Description>Raw readings from 4 sensors, 2 samples each</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1038</Reference>
     </References>
   </UAVariable>
-  <UAObjectType NodeId="ns=1;i=1005" BrowseName="1:MotorType">
+  <UAObjectType NodeId="ns=1;i=1042" BrowseName="1:MotorType">
     <DisplayName>MotorType</DisplayName>
     <Description>Represents a production line motor</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1006</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1007</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1043</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1044</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1045</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId="ns=1;i=1006" BrowseName="1:Speed" ParentNodeId="ns=1;i=1005" DataType="Double" AccessLevel="2">
+  <UAVariable NodeId="ns=1;i=1043" BrowseName="1:Speed" ParentNodeId="ns=1;i=1042" DataType="Double" AccessLevel="2">
     <DisplayName>Speed</DisplayName>
     <Description>Motor speed in rpm</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1042</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1007" BrowseName="1:IsRunning" ParentNodeId="ns=1;i=1005" DataType="Boolean">
+  <UAVariable NodeId="ns=1;i=1044" BrowseName="1:IsRunning" ParentNodeId="ns=1;i=1042" DataType="Boolean">
     <DisplayName>IsRunning</DisplayName>
     <Description>True if the motor is currently engaged</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1042</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1008" BrowseName="1:AlarmCodes" ParentNodeId="ns=1;i=1005" DataType="Int32" ValueRank="1" ArrayDimensions="10" AccessLevel="3">
+  <UAVariable NodeId="ns=1;i=1045" BrowseName="1:AlarmCodes" ParentNodeId="ns=1;i=1042" DataType="Int32" ValueRank="1" ArrayDimensions="10" AccessLevel="3">
     <DisplayName>AlarmCodes</DisplayName>
     <Description>Active alarm codes</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1042</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId="ns=1;i=1009" BrowseName="1:GlobalConveyorBelt">
+  <UAObject NodeId="ns=1;i=1046" BrowseName="1:GlobalConveyorBelt">
     <DisplayName>GlobalConveyorBelt</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1010</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1011</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1047</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1048</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1049</Reference>
       <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1038</Reference>
     </References>
   </UAObject>
-  <UAVariable NodeId="ns=1;i=1010" BrowseName="1:BeltSpeed" ParentNodeId="ns=1;i=1009" DataType="Double" AccessLevel="3">
+  <UAVariable NodeId="ns=1;i=1047" BrowseName="1:BeltSpeed" ParentNodeId="ns=1;i=1046" DataType="Double" AccessLevel="3">
     <DisplayName>BeltSpeed</DisplayName>
     <Description>Belt linear speed in m/s</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1046</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1011" BrowseName="1:MotorTemperature" ParentNodeId="ns=1;i=1009" DataType="Float">
+  <UAVariable NodeId="ns=1;i=1048" BrowseName="1:MotorTemperature" ParentNodeId="ns=1;i=1046" DataType="Float">
     <DisplayName>MotorTemperature</DisplayName>
     <Description>Motor temperature in °C</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1046</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1012" BrowseName="1:SensorReadings" ParentNodeId="ns=1;i=1009" DataType="Int32" ValueRank="1" ArrayDimensions="4,2">
+  <UAVariable NodeId="ns=1;i=1049" BrowseName="1:SensorReadings" ParentNodeId="ns=1;i=1046" DataType="Int32" ValueRank="1" ArrayDimensions="4,2">
     <DisplayName>SensorReadings</DisplayName>
     <Description>Raw readings from 4 sensors, 2 samples each</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1046</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId="ns=1;i=1013" BrowseName="1:TheUniqueMotor">
+  <UAObject NodeId="ns=1;i=1050" BrowseName="1:TheUniqueMotor">
     <DisplayName>TheUniqueMotor</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1014</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1015</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1016</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1051</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1052</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=1053</Reference>
       <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
-      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=1042</Reference>
     </References>
   </UAObject>
-  <UAVariable NodeId="ns=1;i=1014" BrowseName="1:Speed" ParentNodeId="ns=1;i=1013" DataType="Double" AccessLevel="2">
+  <UAVariable NodeId="ns=1;i=1051" BrowseName="1:Speed" ParentNodeId="ns=1;i=1050" DataType="Double" AccessLevel="2">
     <DisplayName>Speed</DisplayName>
     <Description>Motor speed in rpm</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1050</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1015" BrowseName="1:IsRunning" ParentNodeId="ns=1;i=1013" DataType="Boolean">
+  <UAVariable NodeId="ns=1;i=1052" BrowseName="1:IsRunning" ParentNodeId="ns=1;i=1050" DataType="Boolean">
     <DisplayName>IsRunning</DisplayName>
     <Description>True if the motor is currently engaged</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1050</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId="ns=1;i=1016" BrowseName="1:AlarmCodes" ParentNodeId="ns=1;i=1013" DataType="Int32" ValueRank="1" ArrayDimensions="10" AccessLevel="3">
+  <UAVariable NodeId="ns=1;i=1053" BrowseName="1:AlarmCodes" ParentNodeId="ns=1;i=1050" DataType="Int32" ValueRank="1" ArrayDimensions="10" AccessLevel="3">
     <DisplayName>AlarmCodes</DisplayName>
     <Description>Active alarm codes</Description>
     <References>
       <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1050</Reference>
     </References>
   </UAVariable>
 </UANodeSet>
