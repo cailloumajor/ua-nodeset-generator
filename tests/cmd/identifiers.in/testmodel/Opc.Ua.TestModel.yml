@@ -8,16 +8,24 @@ root_elements:
   - type: object_type
     name: ConveyorBeltType
     description: Represents a conveyor belt segment on the production line
-    variables:
-      - name: BeltSpeed
+    children:
+      - type: variable
+        name: BeltSpeed
         description: Belt linear speed in m/s
         data_type: Double
         access_level: ReadWrite
-      - name: MotorTemperature
+      - type: variable
+        name: BeltLength
+        description: Belt length in m
+        data_type: Float
+        access_level: Read
+      - type: variable
+        name: MotorTemperature
         description: Motor temperature in °C
         data_type: Float
         access_level: Read
-      - name: SensorReadings
+      - type: variable
+        name: SensorReadings
         description: Raw readings from 4 sensors, 2 samples each
         data_type: Int32
         access_level: Read
@@ -25,16 +33,19 @@ root_elements:
   - type: object_type
     name: MotorType
     description: Represents a production line motor
-    variables:
-      - name: Speed
+    children:
+      - type: variable
+        name: Speed
         description: Motor speed in rpm
         data_type: Double
         access_level: Write
-      - name: IsRunning
+      - type: variable
+        name: IsRunning
         description: True if the motor is currently engaged
         data_type: Boolean
         access_level: Read
-      - name: AlarmCodes
+      - type: variable
+        name: AlarmCodes
         description: Active alarm codes
         data_type: Int32
         access_level: ReadWrite

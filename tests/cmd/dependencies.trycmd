@@ -1,0 +1,11 @@
+The base namespace only defines types, which the derived namespace extends and
+instantiates.
+
+```console
+$ ua-nodeset-generator base/Opc.Ua.Base.yml
+...
+
+$ ua-nodeset-generator derived/Opc.Ua.Derived.yml
+...
+
+```

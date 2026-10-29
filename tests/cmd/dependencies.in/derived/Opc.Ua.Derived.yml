@@ -1,0 +1,55 @@
+$schema: ../../../../schema/config.schema.json
+
+namespace_url: urn:testns:derived
+version: 0.3.1
+publication_date: 2011-12-13T14:15:16-05:00
+
+dependencies:
+  base: ../base/Opc.Ua.Base.yml
+
+root_elements:
+  - type: object_type
+    name: PalletPayloadType
+    description: Represents a pallet carried through a port
+    base_type: base:PayloadType
+    children:
+      - type: variable
+        name: PalletNumber
+        description: Number of the pallet
+        data_type: UInt16
+        access_level: ReadWrite
+      - type: variable
+        name: Destinations
+        description: Successive destinations of the pallet
+        data_type: UInt16
+        access_level: ReadWrite
+        array_dimensions: [8]
+  - type: object_type
+    name: BarcodeReaderType
+    description: Represents a barcode reader
+    children:
+      - type: variable
+        name: LastCode
+        description: Last barcode read
+        data_type: String
+        access_level: Read
+  - type: object_type
+    name: PalletPortType
+    description: Represents a port handling pallets
+    base_type: base:PortType
+    children:
+      - type: object
+        name: Payload
+        description: Pallet at the port
+        object_type: PalletPayloadType
+  - type: object_instance
+    name: Station1
+    object_type: base:MotorizedEquipmentType
+    objects:
+      - name: InputPort
+        object_type: PalletPortType
+        objects:
+          - name: BarcodeReader
+            object_type: BarcodeReaderType
+      - name: OutputPort
+        object_type: PalletPortType

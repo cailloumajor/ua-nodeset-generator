@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<opc:ModelDesign
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
+  xmlns:ua="http://opcfoundation.org/UA/"
+  xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns="urn:testns:base"
+  TargetNamespace="urn:testns:base"
+  TargetVersion="2.0.0"
+  TargetPublicationDate="2003-04-05T05:07:08Z"
+>
+
+  <opc:Namespaces>
+    <opc:Namespace Prefix="Opc.Ua.Base">urn:testns:base</opc:Namespace>
+  </opc:Namespaces>
+
+  <!-- Namespace metadata according to OPC-UA v1.04. -->
+  <opc:Object SymbolicName="OpcUaBaseNamespaceMetadata" TypeDefinition="ua:NamespaceMetadataType" PartNo="12">
+    <opc:BrowseName>urn:testns:base</opc:BrowseName>
+    <opc:Children>
+      <opc:Property SymbolicName="ua:NamespaceUri" DataType="ua:String">
+        <opc:DefaultValue>
+          <uax:String>urn:testns:base</uax:String>
+        </opc:DefaultValue>
+      </opc:Property>
+      <opc:Property SymbolicName="ua:NamespaceVersion" DataType="ua:String">
+        <opc:DefaultValue>
+          <uax:String>2.0.0</uax:String>
+        </opc:DefaultValue>
+      </opc:Property>
+      <opc:Property SymbolicName="ua:NamespacePublicationDate" DataType="ua:DateTime">
+        <opc:DefaultValue>
+          <uax:DateTime>2003-04-05T05:07:08Z</uax:DateTime>
+        </opc:DefaultValue>
+      </opc:Property>
+      <opc:Property SymbolicName="ua:IsNamespaceSubset" DataType="ua:Boolean">
+        <opc:DefaultValue>
+          <uax:Boolean>false</uax:Boolean>
+        </opc:DefaultValue>
+      </opc:Property>
+      <opc:Property SymbolicName="ua:StaticNodeIdTypes" DataType="ua:IdType" ValueRank="Array" />
+      <opc:Property SymbolicName="ua:StaticNumericNodeIdRange" DataType="ua:NumericRange" ValueRank="Array" />
+      <opc:Property SymbolicName="ua:StaticStringNodeIdPattern" DataType="ua:String" />
+      <opc:Property SymbolicName="ua:DefaultRolePermissions" DataType="ua:RolePermissionType" ValueRank="Array"/>
+      <opc:Property SymbolicName="ua:DefaultUserRolePermissions" DataType="ua:RolePermissionType" ValueRank="Array"/>
+      <opc:Property SymbolicName="ua:DefaultAccessRestrictions" DataType="ua:AccessRestrictionType"/>
+    </opc:Children>
+    <opc:References>
+      <opc:Reference IsInverse="true">
+        <opc:ReferenceType>ua:HasComponent</opc:ReferenceType>
+        <opc:TargetId>ua:Server_Namespaces</opc:TargetId>
+      </opc:Reference>
+    </opc:References>
+  </opc:Object>
+
+  <opc:ObjectType SymbolicName="PayloadType" BaseType="ua:BaseObjectType" IsAbstract="true">
+    <opc:Description>Represents the payload carried through a port</opc:Description>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="IdentificationType" BaseType="ua:BaseObjectType">
+    <opc:Description>Identification data of a physical item</opc:Description>
+    <opc:Children>
+      <opc:Property SymbolicName="SerialNumber" DataType="ua:String" AccessLevel="ReadWrite">
+        <opc:Description>Serial number of the item</opc:Description>
+      </opc:Property>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="PortType" BaseType="ua:BaseObjectType">
+    <opc:Description>Represents a handshake port between an equipment and a supervisor</opc:Description>
+    <opc:Children>
+      <opc:Property SymbolicName="Command" DataType="ua:Byte" AccessLevel="Read">
+        <opc:Description>Command from the equipment to the supervisor</opc:Description>
+      </opc:Property>
+      <opc:Property SymbolicName="Status" DataType="ua:Byte" AccessLevel="ReadWrite">
+        <opc:Description>Status from the supervisor to the equipment</opc:Description>
+      </opc:Property>
+      <opc:Object SymbolicName="Identification" TypeDefinition="IdentificationType">
+        <opc:Description>Identification of the item at the port</opc:Description>
+      </opc:Object>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="EquipmentType" BaseType="ua:BaseObjectType">
+    <opc:Description>Represents an equipment of the production line</opc:Description>
+    <opc:Children>
+      <opc:Property SymbolicName="IsAlive" DataType="ua:Boolean" AccessLevel="ReadWrite">
+        <opc:Description>Sign of life of the supervisor</opc:Description>
+      </opc:Property>
+      <opc:Object SymbolicName="Port" TypeDefinition="PortType" ModellingRule="OptionalPlaceholder">
+        <opc:BrowseName>&#60;Port&#62;</opc:BrowseName>
+        <opc:Description>Ports of the equipment</opc:Description>
+      </opc:Object>
+      <opc:Object SymbolicName="Nameplate" TypeDefinition="IdentificationType" ModellingRule="Optional">
+        <opc:Description>Identification of the equipment</opc:Description>
+      </opc:Object>
+    </opc:Children>
+  </opc:ObjectType>
+
+  <opc:ObjectType SymbolicName="MotorizedEquipmentType" BaseType="EquipmentType">
+    <opc:Description>Represents an equipment driven by a motor</opc:Description>
+    <opc:Children>
+      <opc:Property SymbolicName="MotorSpeed" DataType="ua:Double" AccessLevel="Read">
+        <opc:Description>Motor speed in rpm</opc:Description>
+      </opc:Property>
+      <opc:Property SymbolicName="SpeedSetpoint" DataType="ua:Float" AccessLevel="Write">
+        <opc:Description>Motor speed setpoint in rpm</opc:Description>
+      </opc:Property>
+      <opc:Property SymbolicName="WindingTemperatures" DataType="ua:Int32" AccessLevel="Read" ValueRank="Array" ArrayDimensions="3,2">
+        <opc:Description>Winding temperatures in °C, for 3 phases, 2 sensors each</opc:Description>
+      </opc:Property>
+    </opc:Children>
+  </opc:ObjectType>
+
+</opc:ModelDesign>
