@@ -6,33 +6,35 @@
   xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
   xmlns:ua="http://opcfoundation.org/UA/"
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
-  xmlns="urn:testns:testmodel"
-  TargetNamespace="urn:testns:testmodel"
-  TargetVersion="12.99.45"
-  TargetPublicationDate="1984-12-09T02:32:54Z"
+  xmlns:base="urn:testns:base"
+  xmlns="urn:testns:derived"
+  TargetNamespace="urn:testns:derived"
+  TargetVersion="0.3.1"
+  TargetPublicationDate="2011-12-13T19:15:16Z"
 >
 
   <opc:Namespaces>
-    <opc:Namespace Prefix="Opc.Ua.TestModel">urn:testns:testmodel</opc:Namespace>
+    <opc:Namespace Prefix="Opc.Ua.Derived">urn:testns:derived</opc:Namespace>
+    <opc:Namespace Prefix="Opc.Ua.Base">urn:testns:base</opc:Namespace>
   </opc:Namespaces>
 
   <!-- Namespace metadata according to OPC-UA v1.04. -->
-  <opc:Object SymbolicName="OpcUaTestModelNamespaceMetadata" TypeDefinition="ua:NamespaceMetadataType" PartNo="12">
-    <opc:BrowseName>urn:testns:testmodel</opc:BrowseName>
+  <opc:Object SymbolicName="OpcUaDerivedNamespaceMetadata" TypeDefinition="ua:NamespaceMetadataType" PartNo="12">
+    <opc:BrowseName>urn:testns:derived</opc:BrowseName>
     <opc:Children>
       <opc:Property SymbolicName="ua:NamespaceUri" DataType="ua:String">
         <opc:DefaultValue>
-          <uax:String>urn:testns:testmodel</uax:String>
+          <uax:String>urn:testns:derived</uax:String>
         </opc:DefaultValue>
       </opc:Property>
       <opc:Property SymbolicName="ua:NamespaceVersion" DataType="ua:String">
         <opc:DefaultValue>
-          <uax:String>12.99.45</uax:String>
+          <uax:String>0.3.1</uax:String>
         </opc:DefaultValue>
       </opc:Property>
       <opc:Property SymbolicName="ua:NamespacePublicationDate" DataType="ua:DateTime">
         <opc:DefaultValue>
-          <uax:DateTime>1984-12-09T02:32:54Z</uax:DateTime>
+          <uax:DateTime>2011-12-13T19:15:16Z</uax:DateTime>
         </opc:DefaultValue>
       </opc:Property>
       <opc:Property SymbolicName="ua:IsNamespaceSubset" DataType="ua:Boolean">
@@ -55,46 +57,45 @@
     </opc:References>
   </opc:Object>
 
-  <opc:ObjectType SymbolicName="ConveyorBeltType" BaseType="ua:BaseObjectType">
-    <opc:Description>Represents a conveyor belt segment on the production line</opc:Description>
+  <opc:ObjectType SymbolicName="PalletPayloadType" BaseType="base:PayloadType">
+    <opc:Description>Represents a pallet carried through a port</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="BeltSpeed" DataType="ua:Double" AccessLevel="ReadWrite" >
-        <opc:Description>Belt linear speed in m/s</opc:Description>
+      <opc:Property SymbolicName="PalletNumber" DataType="ua:UInt16" AccessLevel="ReadWrite">
+        <opc:Description>Number of the pallet</opc:Description>
       </opc:Property>
-      <opc:Property SymbolicName="MotorTemperature" DataType="ua:Float" AccessLevel="Read" >
-        <opc:Description>Motor temperature in °C</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="SensorReadings" DataType="ua:Int32" AccessLevel="Read" ValueRank="Array" ArrayDimensions="4,2">
-        <opc:Description>Raw readings from 4 sensors, 2 samples each</opc:Description>
+      <opc:Property SymbolicName="Destinations" DataType="ua:UInt16" AccessLevel="ReadWrite" ValueRank="Array" ArrayDimensions="8">
+        <opc:Description>Successive destinations of the pallet</opc:Description>
       </opc:Property>
     </opc:Children>
   </opc:ObjectType>
 
-  <opc:ObjectType SymbolicName="MotorType" BaseType="ua:BaseObjectType">
-    <opc:Description>Represents a production line motor</opc:Description>
+  <opc:ObjectType SymbolicName="BarcodeReaderType" BaseType="ua:BaseObjectType">
+    <opc:Description>Represents a barcode reader</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="Speed" DataType="ua:Double" AccessLevel="Write" >
-        <opc:Description>Motor speed in rpm</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="IsRunning" DataType="ua:Boolean" AccessLevel="Read" >
-        <opc:Description>True if the motor is currently engaged</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="AlarmCodes" DataType="ua:Int32" AccessLevel="ReadWrite" ValueRank="Array" ArrayDimensions="10">
-        <opc:Description>Active alarm codes</opc:Description>
+      <opc:Property SymbolicName="LastCode" DataType="ua:String" AccessLevel="Read">
+        <opc:Description>Last barcode read</opc:Description>
       </opc:Property>
     </opc:Children>
   </opc:ObjectType>
 
-  <opc:Object SymbolicName="GlobalConveyorBelt" TypeDefinition="ConveyorBeltType">
-    <opc:References>
-      <opc:Reference IsInverse="true">
-        <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
-        <opc:TargetId>ua:ObjectsFolder</opc:TargetId>
-      </opc:Reference>
-    </opc:References>
-  </opc:Object>
+  <opc:ObjectType SymbolicName="PalletPortType" BaseType="base:PortType">
+    <opc:Description>Represents a port handling pallets</opc:Description>
+    <opc:Children>
+      <opc:Object SymbolicName="Payload" TypeDefinition="PalletPayloadType">
+        <opc:Description>Pallet at the port</opc:Description>
+      </opc:Object>
+    </opc:Children>
+  </opc:ObjectType>
 
-  <opc:Object SymbolicName="TheUniqueMotor" TypeDefinition="MotorType">
+  <opc:Object SymbolicName="Station1" TypeDefinition="base:MotorizedEquipmentType">
+    <opc:Children>
+      <opc:Object SymbolicName="InputPort" TypeDefinition="PalletPortType">
+        <opc:Children>
+          <opc:Object SymbolicName="BarcodeReader" TypeDefinition="BarcodeReaderType" />
+        </opc:Children>
+      </opc:Object>
+      <opc:Object SymbolicName="OutputPort" TypeDefinition="PalletPortType" />
+    </opc:Children>
     <opc:References>
       <opc:Reference IsInverse="true">
         <opc:ReferenceType>ua:Organizes</opc:ReferenceType>

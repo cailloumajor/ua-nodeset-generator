@@ -1,0 +1,78 @@
+$schema: ../../../../schema/config.schema.json
+
+namespace_url: urn:testns:base
+version: 2.0.0
+publication_date: 2003-04-05T06:07:08+01:00
+
+root_elements:
+  - type: object_type
+    name: PayloadType
+    description: Represents the payload carried through a port
+    is_abstract: true
+  - type: object_type
+    name: IdentificationType
+    description: Identification data of a physical item
+    children:
+      - type: variable
+        name: SerialNumber
+        description: Serial number of the item
+        data_type: String
+        access_level: ReadWrite
+  - type: object_type
+    name: PortType
+    description: Represents a handshake port between an equipment and a supervisor
+    children:
+      - type: variable
+        name: Command
+        description: Command from the equipment to the supervisor
+        data_type: Byte
+        access_level: Read
+      - type: variable
+        name: Status
+        description: Status from the supervisor to the equipment
+        data_type: Byte
+        access_level: ReadWrite
+      - type: object
+        name: Identification
+        description: Identification of the item at the port
+        object_type: IdentificationType
+  - type: object_type
+    name: EquipmentType
+    description: Represents an equipment of the production line
+    children:
+      - type: variable
+        name: IsAlive
+        description: Sign of life of the supervisor
+        data_type: Boolean
+        access_level: ReadWrite
+      - type: object
+        name: Port
+        description: Ports of the equipment
+        object_type: PortType
+        modelling_rule: OptionalPlaceholder
+      - type: object
+        name: Nameplate
+        description: Identification of the equipment
+        object_type: IdentificationType
+        modelling_rule: Optional
+  - type: object_type
+    name: MotorizedEquipmentType
+    description: Represents an equipment driven by a motor
+    base_type: EquipmentType
+    children:
+      - type: variable
+        name: MotorSpeed
+        description: Motor speed in rpm
+        data_type: Double
+        access_level: Read
+      - type: variable
+        name: SpeedSetpoint
+        description: Motor speed setpoint in rpm
+        data_type: Float
+        access_level: Write
+      - type: variable
+        name: WindingTemperatures
+        description: Winding temperatures in °C, for 3 phases, 2 sensors each
+        data_type: Int32
+        access_level: Read
+        array_dimensions: [3, 2]
