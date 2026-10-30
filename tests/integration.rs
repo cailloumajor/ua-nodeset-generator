@@ -1,5 +1,4 @@
 use std::path::Path;
-use std::process::Command;
 
 #[test]
 fn cli() {
@@ -21,12 +20,10 @@ fn cli() {
 
     // Restore the tools once, as concurrent restorations by the test cases fail when
     // the tools are not already in the NuGet cache.
-    let status = Command::new("dotnet")
-        .args(["tool", "restore"])
-        .current_dir(manifest_dir)
-        .status()
-        .expect("running `dotnet tool restore` should not fail");
-    assert!(status.success(), "`dotnet tool restore` failed: {status}");
+    duct::cmd!("dotnet", "tool", "restore")
+        .dir(manifest_dir)
+        .run()
+        .expect("restoring the dotnet tools should not fail");
 
     trycmd::TestCases::new()
         .case("tests/cmd/*.toml")
