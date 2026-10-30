@@ -1,0 +1,14 @@
+{#- Renders nothing if there are no children, otherwise starts with a line break. -#}
+{%- if !objects.is_empty() %}
+{{ indent }}<opc:Children>
+  {%- for object in objects.iter() %}
+    {%- if object.objects.is_empty() %}
+{{ indent }}  <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}" />
+    {%- else %}
+{{ indent }}  <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}">
+      {{- self.nested(object.objects.as_slice())|safe }}
+{{ indent }}  </opc:Object>
+    {%- endif %}
+  {%- endfor %}
+{{ indent }}</opc:Children>
+{%- endif %}
