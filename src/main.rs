@@ -1,8 +1,9 @@
 use std::fs;
 use std::fs::File;
+use std::io::ErrorKind;
 use std::path::PathBuf;
 
-use anyhow::Context as _;
+use anyhow::{Context as _, anyhow};
 use askama::Template;
 use clap::Parser;
 use duct::cmd;
@@ -102,6 +103,19 @@ fn main() -> anyhow::Result<()> {
         .run()
         .context("Failed to run `dotnet tool restore`")?;
 
+    // Delete existing NodeSet2 file, to be able to detect if the model compiler tool
+    // has done its job. There is a bug (fixed but not released) that makes the
+    // compiler tool always return a success exit code.
+    // https://github.com/OPCFoundation/UA-ModelCompiler/issues/258
+    let generated_nodeset_path = target_dir.join(format!("{ns_prefix}.NodeSet2.xml"));
+    match fs::remove_file(&generated_nodeset_path) {
+        Ok(_) => {}
+        Err(err) if err.kind() == ErrorKind::NotFound => {}
+        result => {
+            result.context("Failed to remove the previously generated NodeSet file")?;
+        }
+    }
+
     // Compile the Model Design.
     let compile_command = cmd!(
         "dotnet",
@@ -131,6 +145,11 @@ fn main() -> anyhow::Result<()> {
     compile_command
         .run()
         .context("Failed to compile OPC-UA Model Design")?;
+
+    // Check if the model compiler has done its job.
+    if !generated_nodeset_path.exists() {
+        return Err(anyhow!("ModelCompiler did not produce the NodeSet file"));
+    }
 
     Ok(())
 }

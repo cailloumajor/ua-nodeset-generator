@@ -1,0 +1,10 @@
+$schema: ../../../../schema/config.schema.json
+
+namespace_url: urn:testns:testmodel
+version: 1.0.0
+publication_date: 2020-01-01T00:00:00Z
+
+root_elements:
+  - type: object_instance
+    name: Orphan
+    object_type: UndefinedType

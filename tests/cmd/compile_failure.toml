@@ -1,0 +1,7 @@
+#:schema https://github.com/assert-rs/snapbox/raw/refs/heads/main/crates/trycmd/schema.json
+
+bin.name = "ua-nodeset-generator"
+args = ["testmodel/Opc.Ua.TestModel.yml"]
+status = "failed"
+# Run in a copy of the input directory, as no output directory is provided.
+fs.sandbox = true
