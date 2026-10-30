@@ -5,6 +5,17 @@
     "helpers:pinGitHubActionDigestsToSemver"
   ],
   "automergeType": "branch",
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/examples/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**",
+    ".mise/locks/**"
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["* 0-4 * * *"],

@@ -359,7 +359,10 @@ url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663854370"
 version = "2026.8.0"
 backend = "pypi:jsonschema-markdown"
 specifiers = ["latest"]
-uv = { path = ".mise/locks/pypi-jsonschema-markdown/2026.8.0", digest = "sha256:b409d09df285a1ae73d02b2f86e259289539f8d145a5c7c62ade69ddddc70baa" }
+uv = { path = ".mise/locks/pypi-jsonschema-markdown/2026.8.0~bb2ba64a", digest = "sha256:5ca4beb29050c82d8bdc0c08a86d9aaaa5ad8c916e3321f1a2b16d6c1d2fa0ea" }
+
+[tools."pypi:jsonschema-markdown".options]
+python = "3.14"
 
 [[tools.python]]
 version = "3.14.10"
