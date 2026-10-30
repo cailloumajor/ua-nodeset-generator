@@ -1,3 +1,4 @@
+use std::ffi::OsString;
 use std::fs;
 use std::fs::File;
 use std::io::ErrorKind;
@@ -7,12 +8,12 @@ use anyhow::{Context as _, anyhow};
 use askama::Template;
 use clap::Parser;
 use duct::cmd;
-use ua_nodeset_generator::{Namespace, RootElement};
+use ua_nodeset_generator::{Namespace, ObjectInstance, RootElement};
 
 #[derive(Parser)]
 #[command(about, version)]
 struct Cli {
-    /// Path of the namespace description file (JSON5 format).
+    /// Path of the namespace description file (YAML format).
     description_file: PathBuf,
 }
 
@@ -30,8 +31,50 @@ struct ModelDesign {
     ns_version: String,
     /// Namespace publication date
     ns_pub_date: String,
+    /// Namespaces this namespace depends on, as tuples of the XML prefix used to
+    /// reference the dependency elements, the dependency namespace URL, and the
+    /// dependency namespace prefix.
+    ns_dependencies: Vec<(String, String, String)>,
     /// Root elements of this namespace.
     root_elements: Vec<RootElement>,
+}
+
+impl ModelDesign {
+    /// Return the template for the children of a root object instance.
+    fn instance_children<'a>(&self, objects: &'a [ObjectInstance]) -> ObjectInstanceChildren<'a> {
+        ObjectInstanceChildren {
+            objects,
+            // The `Children` element is two XML levels deep, as it is enclosed in the
+            // root `ModelDesign` element and in the `Object` element of the instance,
+            // hence two indentation levels.
+            indent: "    ".to_string(),
+        }
+    }
+}
+
+/// Represents the template for the children of an object instance.
+///
+/// The template renders itself for the children of each child, as templates macros
+/// can not be recursive.
+#[derive(Template)]
+#[template(path = "object_instance_children.xml")]
+struct ObjectInstanceChildren<'a> {
+    /// Children of the object instance.
+    objects: &'a [ObjectInstance],
+    /// Indentation of the `Children` element.
+    indent: String,
+}
+
+impl<'a> ObjectInstanceChildren<'a> {
+    /// Return the template for the children of a child of the object instance.
+    fn nested(&self, objects: &'a [ObjectInstance]) -> Self {
+        Self {
+            objects,
+            // The nested `Children` element is two XML levels deeper, as it is enclosed
+            // in the `Object` element of the child, hence two indentation levels.
+            indent: format!("{}    ", self.indent),
+        }
+    }
 }
 
 /// Represents the template for the node identifiers files.
@@ -59,13 +102,45 @@ fn main() -> anyhow::Result<()> {
         .to_string_lossy();
 
     // Get the namespace description from the provided file.
-    let input_file_contents = fs::File::open(&args.description_file)
-        .context("Failed to open provided description file")?;
-    let namespace: Namespace = yaml_serde::from_reader(input_file_contents)
-        .context("Failed to deserialize provided description file")?;
+    let namespace = Namespace::from_yaml_file(&args.description_file)
+        .context("Failed to get namespace description from file")?;
 
     let ns_metadata_obj_name = format!("{}NamespaceMetadata", ns_prefix.replace('.', ""));
     let ns_pub_date = namespace.publication_date.to_string();
+
+    // Get the dependencies information, for the template and for the model compiler.
+    let (ns_dependencies, dependencies_nodeset_paths): (Vec<_>, Vec<_>) = namespace
+        .dependencies
+        .into_iter()
+        .map(|(key, dep_path)| {
+            let dep_description = Namespace::from_yaml_file(target_dir.join(&dep_path))
+                .with_context(|| {
+                    format!(
+                        "Failed to get dependency description from {}",
+                        dep_path.display()
+                    )
+                })?;
+            let prefix = dep_path
+                .file_stem()
+                .with_context(|| {
+                    format!(
+                        "Dependency description {} has no filename",
+                        dep_path.display()
+                    )
+                })?
+                .to_string_lossy()
+                .into_owned();
+
+            // The NodeSet file of the dependency is generated next to its description file.
+            let nodeset_path = target_dir
+                .join(&dep_path)
+                .with_file_name(format!("{prefix}.NodeSet2.xml"));
+
+            Ok(((key, dep_description.namespace_url, prefix), nodeset_path))
+        })
+        .collect::<Result<Vec<_>, anyhow::Error>>()?
+        .into_iter()
+        .unzip();
 
     // Create the Model Design template.
     let model_design = ModelDesign {
@@ -74,6 +149,7 @@ fn main() -> anyhow::Result<()> {
         ns_metadata_obj_name: ns_metadata_obj_name.clone(),
         ns_version: namespace.version,
         ns_pub_date,
+        ns_dependencies,
         root_elements: namespace.root_elements,
     };
 
@@ -85,17 +161,24 @@ fn main() -> anyhow::Result<()> {
         .write_into(&mut model_design_file)
         .context("Failed to write Model Design file")?;
 
-    // Create and fill the node identifiers numbering file from template.
-    let node_identifiers = NodeIdentifiers {
-        ns_metadata_obj_name,
-    };
+    // Create and fill the node identifiers numbering file from template if it does
+    // not already exist.
     let identifier_filename = format!("{ns_prefix}.Model.csv");
     let identifier_file_path = target_dir.join(identifier_filename);
-    let mut identifier_file =
-        File::create(&identifier_file_path).context("Failed to create node identifiers file")?;
-    node_identifiers
-        .write_into(&mut identifier_file)
-        .context("Failed to write node identifiers file")?;
+    match File::create_new(&identifier_file_path) {
+        Ok(mut file) => {
+            let node_identifiers = NodeIdentifiers {
+                ns_metadata_obj_name,
+            };
+            node_identifiers
+                .write_into(&mut file)
+                .context("Failed to write node identifiers file")?;
+        }
+        Err(err) if err.kind() == ErrorKind::AlreadyExists => {}
+        result => {
+            result.context("Failed to create node identifiers file")?;
+        }
+    }
 
     // Ensure model compiler tool availability.
     let restore_command = cmd!("dotnet", "tool", "restore");
@@ -117,31 +200,38 @@ fn main() -> anyhow::Result<()> {
     }
 
     // Compile the Model Design.
-    let compile_command = cmd!(
-        "dotnet",
-        "tool",
-        "run",
-        "Opc.Ua.ModelCompiler",
-        "compile",
+    let mut compile_args: Vec<OsString> = vec![
+        "tool".into(),
+        "run".into(),
+        "Opc.Ua.ModelCompiler".into(),
+        "compile".into(),
         // Path to the ModelDesign file.
-        "-d2",
-        model_design_file_path,
+        "-d2".into(),
+        model_design_file_path.into(),
+    ];
+    // Paths to the NodeSet files of the dependencies, which must follow the ModelDesign
+    // file, as the first file is the one to compile.
+    for nodeset_path in dependencies_nodeset_paths {
+        compile_args.extend(["-d2".into(), nodeset_path.into()]);
+    }
+    compile_args.extend([
         // Output directory.
-        "-o2",
-        &target_dir,
+        "-o2".into(),
+        target_dir.into(),
         // Path to the identifier file (will be created if needed).
-        "-cg",
-        identifier_file_path,
+        "-cg".into(),
+        identifier_file_path.into(),
         // The first node ID identifier to use.
-        "-id",
-        "1000",
+        "-id".into(),
+        "1000".into(),
         // OPC-UA v1.04.
-        "-version",
-        "v104",
+        "-version".into(),
+        "v104".into(),
         // Suppress unwanted generated output.
-        "-suppress",
-        "PredefinedNodes,Constants,JsonSchema,Classes,DataTypes",
-    );
+        "-suppress".into(),
+        "PredefinedNodes,Constants,JsonSchema,Classes,DataTypes".into(),
+    ]);
+    let compile_command = duct::cmd("dotnet", compile_args);
     compile_command
         .run()
         .context("Failed to compile OPC-UA Model Design")?;

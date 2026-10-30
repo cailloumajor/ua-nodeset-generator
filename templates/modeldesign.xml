@@ -6,6 +6,9 @@
   xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
   xmlns:ua="http://opcfoundation.org/UA/"
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  {%- for (key, url, _) in ns_dependencies %}
+  xmlns:{{ key }}="{{ url }}"
+  {%- endfor %}
   xmlns="{{ ns_url }}"
   TargetNamespace="{{ ns_url }}"
   TargetVersion="{{ ns_version }}"
@@ -14,6 +17,9 @@
 
   <opc:Namespaces>
     <opc:Namespace Prefix="{{ ns_prefix }}">{{ ns_url }}</opc:Namespace>
+    {%- for (key, url, prefix) in ns_dependencies %}
+    <opc:Namespace Prefix="{{ prefix }}">{{ url }}</opc:Namespace>
+    {%- endfor %}
   </opc:Namespaces>
 
   <!-- Namespace metadata according to OPC-UA v1.04. -->
@@ -58,23 +64,48 @@
 {%- for root_element in root_elements %}
   {%- if let Some(object_type) = root_element.as_object_type() %}
 
-  <opc:ObjectType SymbolicName="{{ object_type.name }}" BaseType="ua:BaseObjectType">
+  <opc:ObjectType SymbolicName="{{ object_type.name }}" {# Keep a whitespace #}
+    {%- if let Some(base_type) = object_type.base_type -%}
+      BaseType="{{ base_type }}"
+    {%- else -%}
+      BaseType="ua:BaseObjectType"
+    {%- endif -%}
+    {%- if object_type.is_abstract -%}
+      {# Keep a whitespace #} IsAbstract="true"
+    {%- endif -%}
+  >
     <opc:Description>{{ object_type.description }}</opc:Description>
+    {%- if !object_type.children.is_empty() %}
     <opc:Children>
-    {%- for var in object_type.variables %}
-      <opc:Property SymbolicName="{{ var.name }}" DataType="ua:{{ var.data_type }}" AccessLevel="{{ var.access_level }}" {# Keep the trailing space #}
+    {%- for child in object_type.children %}
+    {%- if let Some(var) = child.as_variable() %}
+      <opc:Property SymbolicName="{{ var.name }}" DataType="ua:{{ var.data_type }}" AccessLevel="{{ var.access_level }}"
         {%- if let Some(dimensions) = var.array_dimensions -%}
-          ValueRank="Array" ArrayDimensions="{{ dimensions | join(',') }}"
+          {# Keep a whitespace #} ValueRank="Array" ArrayDimensions="{{ dimensions | join(',') }}"
         {%- endif -%}
       >
         <opc:Description>{{ var.description }}</opc:Description>
       </opc:Property>
+    {%- else if let Some(object) = child.as_object() %}
+      <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}"
+        {%- if let Some(modelling_rule) = object.modelling_rule -%}
+          {# Keep a whitespace #} ModellingRule="{{ modelling_rule }}"
+        {%- endif -%}
+      >
+        {%- if let Some(browse_name) = object.browse_name() %}
+        <opc:BrowseName>{{ browse_name }}</opc:BrowseName>
+        {%- endif %}
+        <opc:Description>{{ object.description }}</opc:Description>
+      </opc:Object>
+    {%- endif %}
     {%- endfor %}
     </opc:Children>
+    {%- endif %}
   </opc:ObjectType>
   {%- else if let Some(object_instance) = root_element.as_object_instance() %}
 
   <opc:Object SymbolicName="{{ object_instance.name }}" TypeDefinition="{{ object_instance.object_type }}">
+    {{- self.instance_children(object_instance.objects.as_slice())|safe }}
     <opc:References>
       <opc:Reference IsInverse="true">
         <opc:ReferenceType>ua:Organizes</opc:ReferenceType>
