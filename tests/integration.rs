@@ -1,4 +1,5 @@
 use std::path::Path;
+use std::process::Command;
 
 #[test]
 fn cli() {
@@ -17,6 +18,15 @@ fn cli() {
                 .expect("copying the tools manifest should not fail");
         }
     }
+
+    // Restore the tools once, as concurrent restorations by the test cases fail when
+    // the tools are not already in the NuGet cache.
+    let status = Command::new("dotnet")
+        .args(["tool", "restore"])
+        .current_dir(manifest_dir)
+        .status()
+        .expect("running `dotnet tool restore` should not fail");
+    assert!(status.success(), "`dotnet tool restore` failed: {status}");
 
     trycmd::TestCases::new()
         .case("tests/cmd/*.toml")
