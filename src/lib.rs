@@ -4,12 +4,14 @@ use std::path::{Path, PathBuf};
 
 use anyhow::Context as _;
 use jiff::Timestamp;
-use schemars::JsonSchema;
+use schemars::{JsonSchema, Schema};
 use serde::Deserialize;
+use serde_json::json;
 use strum::Display;
 
 /// Source description of an OPC-UA namespace for ModelDesign XML generation.
 #[derive(Deserialize, JsonSchema)]
+#[schemars(deny_unknown_fields, transform = add_well_known_properties)]
 pub struct Namespace {
     /// Namespace URL.
     pub namespace_url: String,
@@ -80,6 +82,7 @@ impl RootElement {
 
 /// Source description of an OPC-UA ObjectType for ModelDesign XML generation.
 #[derive(Deserialize, JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct ObjectType {
     /// Name of the ObjectType (e.g. `MotorType`).
     pub name: String,
@@ -134,6 +137,7 @@ impl ObjectTypeChild {
 
 /// Source description of a variable of an ObjectType.
 #[derive(Deserialize, JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct Variable {
     /// Name of the variable.
     pub name: String,
@@ -152,6 +156,7 @@ pub struct Variable {
 
 /// Source description of an object component of an ObjectType.
 #[derive(Deserialize, JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct ObjectComponent {
     /// Name of the object.
     pub name: String,
@@ -232,6 +237,7 @@ pub enum ModellingRule {
 /// An instance at the root of the namespace is organized in the `Objects` folder,
 /// other instances are components of their parent instance.
 #[derive(Deserialize, JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct ObjectInstance {
     /// Name of the object instance.
     pub name: String,
@@ -241,4 +247,16 @@ pub struct ObjectInstance {
     /// Object instances to add to this instance, as components.
     #[serde(default)]
     pub objects: Vec<ObjectInstance>,
+}
+
+/// Adds well-known properties to the schema. Intended to be used with a `transform`
+/// attribute on the root object.
+fn add_well_known_properties(schema: &mut Schema) {
+    let object = schema.as_object_mut().expect("schema should be an object");
+    let properties = object
+        .get_mut("properties")
+        .and_then(|props| props.as_object_mut())
+        .expect("object should have a `properties` member being an object");
+    properties.insert("$schema".into(), json!({ "type": "string" }));
+    properties.insert("$id".into(), json!({ "type": "string" }));
 }

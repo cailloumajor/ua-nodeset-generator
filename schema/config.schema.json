@@ -4,6 +4,12 @@
   "description": "Source description of an OPC-UA namespace for ModelDesign XML generation.",
   "type": "object",
   "properties": {
+    "$id": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    },
     "dependencies": {
       "description": "Namespaces this namespace depends on, mapped by prefix.\n\nEach value is the path of the dependency description file, relative to the\ndirectory of this description file. The prefix is used to reference the elements\nof the dependency (e.g. `prefix:MotorType`). The dependency must have been\ngenerated beforehand, as its NodeSet file is used.",
       "type": "object",
@@ -32,14 +38,133 @@
             "description": "ObjectType description.",
             "type": "object",
             "properties": {
+              "base_type": {
+                "description": "Name of the ObjectType this one derives from, prefixed for an ObjectType of a\ndependency (e.g. `prefix:DeviceType`). Defaults to `BaseObjectType`.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "children": {
+                "description": "Children of the ObjectType, in declaration order.",
+                "type": "array",
+                "items": {
+                  "description": "A child of an ObjectType.",
+                  "oneOf": [
+                    {
+                      "title": "VariableChild",
+                      "description": "Variable description, as a property.",
+                      "type": "object",
+                      "properties": {
+                        "access_level": {
+                          "description": "Access level of the variable.",
+                          "$ref": "#/$defs/AccessLevel"
+                        },
+                        "array_dimensions": {
+                          "description": "List of [array dimensions] for the variable, which is a scalar if omitted.\n\n[array dimensions]: https://reference.opcfoundation.org/specs/OPC-10000-6/5.2.5",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "minItems": 1
+                        },
+                        "data_type": {
+                          "description": "OPC-UA data type of the variable.",
+                          "$ref": "#/$defs/ScalarDataType"
+                        },
+                        "description": {
+                          "description": "Description of the variable.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the variable.",
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "const": "variable"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "type",
+                        "name",
+                        "description",
+                        "data_type",
+                        "access_level"
+                      ]
+                    },
+                    {
+                      "title": "ObjectChild",
+                      "description": "Object description, as a component.",
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "description": "Description of the object.",
+                          "type": "string"
+                        },
+                        "modelling_rule": {
+                          "description": "[Modelling rule] of the object, `Mandatory` if omitted.\n\n[Modelling rule]: https://reference.opcfoundation.org/specs/OPC-10000-3/6.4.4",
+                          "anyOf": [
+                            {
+                              "$ref": "#/$defs/ModellingRule"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "name": {
+                          "description": "Name of the object.",
+                          "type": "string"
+                        },
+                        "object_type": {
+                          "description": "Name of the ObjectType of the object, prefixed for an ObjectType of a dependency\n(e.g. `prefix:MotorType`).",
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "const": "object"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "type",
+                        "name",
+                        "description",
+                        "object_type"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "description": {
+                "description": "Description of the ObjectType.",
+                "type": "string"
+              },
+              "is_abstract": {
+                "description": "Whether the ObjectType is abstract, i.e. cannot be instantiated.",
+                "type": "boolean",
+                "default": false
+              },
+              "name": {
+                "description": "Name of the ObjectType (e.g. `MotorType`).",
+                "type": "string"
+              },
               "type": {
                 "type": "string",
                 "const": "object_type"
               }
             },
-            "$ref": "#/$defs/ObjectType",
+            "additionalProperties": false,
             "required": [
-              "type"
+              "type",
+              "name",
+              "description"
             ]
           },
           {
@@ -47,14 +172,31 @@
             "description": "ObjectType instance description.",
             "type": "object",
             "properties": {
+              "name": {
+                "description": "Name of the object instance.",
+                "type": "string"
+              },
+              "object_type": {
+                "description": "Name of the ObjectType of this instance, prefixed for an ObjectType of a\ndependency (e.g. `prefix:MotorType`).",
+                "type": "string"
+              },
+              "objects": {
+                "description": "Object instances to add to this instance, as components.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/ObjectInstance"
+                }
+              },
               "type": {
                 "type": "string",
                 "const": "object_instance"
               }
             },
-            "$ref": "#/$defs/ObjectInstance",
+            "additionalProperties": false,
             "required": [
-              "type"
+              "type",
+              "name",
+              "object_type"
             ]
           }
         ]
@@ -65,6 +207,7 @@
       "type": "string"
     }
   },
+  "additionalProperties": false,
   "required": [
     "namespace_url",
     "version",
@@ -91,40 +234,6 @@
         "OptionalPlaceholder"
       ]
     },
-    "ObjectComponent": {
-      "description": "Source description of an object component of an ObjectType.",
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "Description of the object.",
-          "type": "string"
-        },
-        "modelling_rule": {
-          "description": "[Modelling rule] of the object, `Mandatory` if omitted.\n\n[Modelling rule]: https://reference.opcfoundation.org/specs/OPC-10000-3/6.4.4",
-          "anyOf": [
-            {
-              "$ref": "#/$defs/ModellingRule"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "name": {
-          "description": "Name of the object.",
-          "type": "string"
-        },
-        "object_type": {
-          "description": "Name of the ObjectType of the object, prefixed for an ObjectType of a dependency\n(e.g. `prefix:MotorType`).",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "description",
-        "object_type"
-      ]
-    },
     "ObjectInstance": {
       "description": "Source description of an instance of an ObjectType.\n\nAn instance at the root of the namespace is organized in the `Objects` folder,\nother instances are components of their parent instance.",
       "type": "object",
@@ -145,78 +254,10 @@
           }
         }
       },
+      "additionalProperties": false,
       "required": [
         "name",
         "object_type"
-      ]
-    },
-    "ObjectType": {
-      "description": "Source description of an OPC-UA ObjectType for ModelDesign XML generation.",
-      "type": "object",
-      "properties": {
-        "base_type": {
-          "description": "Name of the ObjectType this one derives from, prefixed for an ObjectType of a\ndependency (e.g. `prefix:DeviceType`). Defaults to `BaseObjectType`.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "children": {
-          "description": "Children of the ObjectType, in declaration order.",
-          "type": "array",
-          "items": {
-            "description": "A child of an ObjectType.",
-            "oneOf": [
-              {
-                "title": "VariableChild",
-                "description": "Variable description, as a property.",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "variable"
-                  }
-                },
-                "$ref": "#/$defs/Variable",
-                "required": [
-                  "type"
-                ]
-              },
-              {
-                "title": "ObjectChild",
-                "description": "Object description, as a component.",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "object"
-                  }
-                },
-                "$ref": "#/$defs/ObjectComponent",
-                "required": [
-                  "type"
-                ]
-              }
-            ]
-          }
-        },
-        "description": {
-          "description": "Description of the ObjectType.",
-          "type": "string"
-        },
-        "is_abstract": {
-          "description": "Whether the ObjectType is abstract, i.e. cannot be instantiated.",
-          "type": "boolean",
-          "default": false
-        },
-        "name": {
-          "description": "Name of the ObjectType (e.g. `MotorType`).",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "description"
       ]
     },
     "ScalarDataType": {
@@ -239,46 +280,6 @@
         "Guid",
         "ByteString",
         "LocalizedText"
-      ]
-    },
-    "Variable": {
-      "description": "Source description of a variable of an ObjectType.",
-      "type": "object",
-      "properties": {
-        "access_level": {
-          "description": "Access level of the variable.",
-          "$ref": "#/$defs/AccessLevel"
-        },
-        "array_dimensions": {
-          "description": "List of [array dimensions] for the variable, which is a scalar if omitted.\n\n[array dimensions]: https://reference.opcfoundation.org/specs/OPC-10000-6/5.2.5",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "minItems": 1
-        },
-        "data_type": {
-          "description": "OPC-UA data type of the variable.",
-          "$ref": "#/$defs/ScalarDataType"
-        },
-        "description": {
-          "description": "Description of the variable.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Name of the variable.",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "description",
-        "data_type",
-        "access_level"
       ]
     }
   }
