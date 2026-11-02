@@ -58,28 +58,6 @@ pub enum RootElement {
     ObjectInstance(ObjectInstance),
 }
 
-impl RootElement {
-    /// If the [`RootElement`] is an object type, return a reference to the associated
-    /// [`ObjectType`]. Returns [`None`] otherwise.
-    pub fn as_object_type(&self) -> Option<&ObjectType> {
-        if let Self::ObjectType(t) = self {
-            Some(t)
-        } else {
-            None
-        }
-    }
-
-    /// If the [`RootElement`] is an object instance, return a reference to the associated
-    /// [`ObjectInstance`]. Returns [`None`] otherwise.
-    pub fn as_object_instance(&self) -> Option<&ObjectInstance> {
-        if let Self::ObjectInstance(i) = self {
-            Some(i)
-        } else {
-            None
-        }
-    }
-}
-
 /// Source description of an OPC-UA ObjectType for ModelDesign XML generation.
 #[derive(Deserialize, JsonSchema)]
 #[schemars(deny_unknown_fields)]
@@ -111,28 +89,6 @@ pub enum ObjectTypeChild {
     /// Object description, as a component.
     #[schemars(title = "ObjectChild")]
     Object(ObjectComponent),
-}
-
-impl ObjectTypeChild {
-    /// If the [`ObjectTypeChild`] is a variable, return a reference to the associated
-    /// [`Variable`]. Returns [`None`] otherwise.
-    pub fn as_variable(&self) -> Option<&Variable> {
-        if let Self::Variable(v) = self {
-            Some(v)
-        } else {
-            None
-        }
-    }
-
-    /// If the [`ObjectTypeChild`] is an object, return a reference to the associated
-    /// [`ObjectComponent`]. Returns [`None`] otherwise.
-    pub fn as_object(&self) -> Option<&ObjectComponent> {
-        if let Self::Object(o) = self {
-            Some(o)
-        } else {
-            None
-        }
-    }
 }
 
 /// Source description of a variable of an ObjectType.

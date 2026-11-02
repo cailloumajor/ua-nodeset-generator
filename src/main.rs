@@ -8,7 +8,7 @@ use anyhow::{Context as _, anyhow};
 use askama::Template;
 use clap::Parser;
 use duct::cmd;
-use ua_nodeset_generator::{Namespace, ObjectInstance, RootElement};
+use ua_nodeset_generator::{Namespace, ObjectInstance, ObjectTypeChild, RootElement};
 
 #[derive(Parser)]
 #[command(about, version)]

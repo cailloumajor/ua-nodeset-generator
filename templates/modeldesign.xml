@@ -62,7 +62,8 @@
   </opc:Object>
 
 {%- for root_element in root_elements %}
-  {%- if let Some(object_type) = root_element.as_object_type() %}
+  {%- match root_element %}
+  {%- when RootElement::ObjectType with (object_type) %}
 
   <opc:ObjectType SymbolicName="{{ object_type.name }}" {# Keep a whitespace #}
     {%- if let Some(base_type) = object_type.base_type -%}
@@ -78,7 +79,8 @@
     {%- if !object_type.children.is_empty() %}
     <opc:Children>
     {%- for child in object_type.children %}
-    {%- if let Some(var) = child.as_variable() %}
+    {%- match child %}
+    {%- when ObjectTypeChild::Variable with (var) %}
       <opc:Property SymbolicName="{{ var.name }}" DataType="ua:{{ var.data_type }}" AccessLevel="{{ var.access_level }}"
         {%- if let Some(dimensions) = var.array_dimensions -%}
           {# Keep a whitespace #} ValueRank="Array" ArrayDimensions="{{ dimensions | join(',') }}"
@@ -86,7 +88,7 @@
       >
         <opc:Description>{{ var.description }}</opc:Description>
       </opc:Property>
-    {%- else if let Some(object) = child.as_object() %}
+    {%- when ObjectTypeChild::Object with (object) %}
       <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}"
         {%- if let Some(modelling_rule) = object.modelling_rule -%}
           {# Keep a whitespace #} ModellingRule="{{ modelling_rule }}"
@@ -97,12 +99,12 @@
         {%- endif %}
         <opc:Description>{{ object.description }}</opc:Description>
       </opc:Object>
-    {%- endif %}
+    {%- endmatch %}
     {%- endfor %}
     </opc:Children>
     {%- endif %}
   </opc:ObjectType>
-  {%- else if let Some(object_instance) = root_element.as_object_instance() %}
+  {%- when RootElement::ObjectInstance with (object_instance) %}
 
   <opc:Object SymbolicName="{{ object_instance.name }}" TypeDefinition="{{ object_instance.object_type }}">
     {{- self.instance_children(object_instance.objects.as_slice()) | indent(4) | safe }}
@@ -114,7 +116,7 @@
     </opc:References>
   </opc:Object>
 
-  {%- endif %}
+  {%- endmatch %}
 {%- endfor %}
 
 </opc:ModelDesign>
