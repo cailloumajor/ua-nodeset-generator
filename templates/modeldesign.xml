@@ -105,7 +105,7 @@
   {%- else if let Some(object_instance) = root_element.as_object_instance() %}
 
   <opc:Object SymbolicName="{{ object_instance.name }}" TypeDefinition="{{ object_instance.object_type }}">
-    {{- self.instance_children(object_instance.objects.as_slice())|safe }}
+    {{- self.instance_children(object_instance.objects.as_slice()) | indent(4) | safe }}
     <opc:References>
       <opc:Reference IsInverse="true">
         <opc:ReferenceType>ua:Organizes</opc:ReferenceType>

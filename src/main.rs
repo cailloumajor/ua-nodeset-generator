@@ -42,13 +42,7 @@ struct ModelDesign {
 impl ModelDesign {
     /// Return the template for the children of a root object instance.
     fn instance_children<'a>(&self, objects: &'a [ObjectInstance]) -> ObjectInstanceChildren<'a> {
-        ObjectInstanceChildren {
-            objects,
-            // The `Children` element is two XML levels deep, as it is enclosed in the
-            // root `ModelDesign` element and in the `Object` element of the instance,
-            // hence two indentation levels.
-            indent: "    ".to_string(),
-        }
+        ObjectInstanceChildren { objects }
     }
 }
 
@@ -61,19 +55,12 @@ impl ModelDesign {
 struct ObjectInstanceChildren<'a> {
     /// Children of the object instance.
     objects: &'a [ObjectInstance],
-    /// Indentation of the `Children` element.
-    indent: String,
 }
 
 impl<'a> ObjectInstanceChildren<'a> {
     /// Return the template for the children of a child of the object instance.
     fn nested(&self, objects: &'a [ObjectInstance]) -> Self {
-        Self {
-            objects,
-            // The nested `Children` element is two XML levels deeper, as it is enclosed
-            // in the `Object` element of the child, hence two indentation levels.
-            indent: format!("{}    ", self.indent),
-        }
+        Self { objects }
     }
 }
 
