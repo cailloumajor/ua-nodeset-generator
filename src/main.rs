@@ -31,12 +31,20 @@ struct ModelDesign {
     ns_version: String,
     /// Namespace publication date
     ns_pub_date: String,
-    /// Namespaces this namespace depends on, as tuples of the XML prefix used to
-    /// reference the dependency elements, the dependency namespace URL, and the
-    /// dependency namespace prefix.
-    ns_dependencies: Vec<(String, String, String)>,
+    /// Namespaces this namespace depends on.
+    ns_dependencies: Vec<NsDependency>,
     /// Root elements of this namespace.
     root_elements: Vec<RootElement>,
+}
+
+/// Represents a namespace dependency in the ModelDesign template.
+struct NsDependency {
+    /// XML prefix used to reference the dependency elements.
+    xml_prefix: String,
+    /// Dependency namespace URL.
+    url: String,
+    /// Dependency namespace prefix.
+    prefix: String,
 }
 
 impl ModelDesign {
@@ -123,7 +131,13 @@ fn main() -> anyhow::Result<()> {
                 .join(&dep_path)
                 .with_file_name(format!("{prefix}.NodeSet2.xml"));
 
-            Ok(((key, dep_description.namespace_url, prefix), nodeset_path))
+            let dependency = NsDependency {
+                xml_prefix: key,
+                url: dep_description.namespace_url,
+                prefix,
+            };
+
+            Ok((dependency, nodeset_path))
         })
         .collect::<Result<Vec<_>, anyhow::Error>>()?
         .into_iter()

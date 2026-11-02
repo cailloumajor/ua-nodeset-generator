@@ -6,8 +6,8 @@
   xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
   xmlns:ua="http://opcfoundation.org/UA/"
   xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
-  {%- for (key, url, _) in ns_dependencies %}
-  xmlns:{{ key }}="{{ url }}"
+  {%- for dependency in ns_dependencies %}
+  xmlns:{{ dependency.xml_prefix }}="{{ dependency.url }}"
   {%- endfor %}
   xmlns="{{ ns_url }}"
   TargetNamespace="{{ ns_url }}"
@@ -17,8 +17,8 @@
 
   <opc:Namespaces>
     <opc:Namespace Prefix="{{ ns_prefix }}">{{ ns_url }}</opc:Namespace>
-    {%- for (key, url, prefix) in ns_dependencies %}
-    <opc:Namespace Prefix="{{ prefix }}">{{ url }}</opc:Namespace>
+    {%- for dependency in ns_dependencies %}
+    <opc:Namespace Prefix="{{ dependency.prefix }}">{{ dependency.url }}</opc:Namespace>
     {%- endfor %}
   </opc:Namespaces>
 
