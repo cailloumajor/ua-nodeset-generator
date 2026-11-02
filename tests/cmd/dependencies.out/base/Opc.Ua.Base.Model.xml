@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <opc:ModelDesign
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -40,9 +40,9 @@
           <uax:Boolean>false</uax:Boolean>
         </opc:DefaultValue>
       </opc:Property>
-      <opc:Property SymbolicName="ua:StaticNodeIdTypes" DataType="ua:IdType" ValueRank="Array" />
-      <opc:Property SymbolicName="ua:StaticNumericNodeIdRange" DataType="ua:NumericRange" ValueRank="Array" />
-      <opc:Property SymbolicName="ua:StaticStringNodeIdPattern" DataType="ua:String" />
+      <opc:Property SymbolicName="ua:StaticNodeIdTypes" DataType="ua:IdType" ValueRank="Array"/>
+      <opc:Property SymbolicName="ua:StaticNumericNodeIdRange" DataType="ua:NumericRange" ValueRank="Array"/>
+      <opc:Property SymbolicName="ua:StaticStringNodeIdPattern" DataType="ua:String"/>
       <opc:Property SymbolicName="ua:DefaultRolePermissions" DataType="ua:RolePermissionType" ValueRank="Array"/>
       <opc:Property SymbolicName="ua:DefaultUserRolePermissions" DataType="ua:RolePermissionType" ValueRank="Array"/>
       <opc:Property SymbolicName="ua:DefaultAccessRestrictions" DataType="ua:AccessRestrictionType"/>

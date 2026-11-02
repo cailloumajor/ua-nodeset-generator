@@ -3,7 +3,7 @@
 <opc:Children>
   {%- for object in objects.iter() %}
     {%- if object.objects.is_empty() %}
-  <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}" />
+  <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}"/>
     {%- else %}
   <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}">
       {{- self.nested(object.objects.as_slice()) | indent(4) | safe }}
