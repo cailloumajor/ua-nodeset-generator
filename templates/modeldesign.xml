@@ -65,14 +65,8 @@
   {%- match root_element %}
   {%- when RootElement::ObjectType with (object_type) %}
 
-  <opc:ObjectType SymbolicName="{{ object_type.name }}" {# Keep a whitespace #}
-    {%- if let Some(base_type) = object_type.base_type -%}
-      BaseType="{{ base_type }}"
-    {%- else -%}
-      BaseType="ua:BaseObjectType"
-    {%- endif -%}
-    {%- if object_type.is_abstract -%}
-      {# Keep a whitespace #} IsAbstract="true"
+  <opc:ObjectType SymbolicName="{{ object_type.name }}" BaseType="{{ object_type.base_type() }}"
+    {%- if object_type.is_abstract %} IsAbstract="true"
     {%- endif -%}
   >
     <opc:Description>{{ object_type.description }}</opc:Description>
@@ -82,16 +76,14 @@
     {%- match child %}
     {%- when ObjectTypeChild::Variable with (var) %}
       <opc:Property SymbolicName="{{ var.name }}" DataType="ua:{{ var.data_type }}" AccessLevel="{{ var.access_level }}"
-        {%- if let Some(dimensions) = var.array_dimensions -%}
-          {# Keep a whitespace #} ValueRank="Array" ArrayDimensions="{{ dimensions | join(',') }}"
+        {%- if let Some(dims) = var.array_dimensions %} ValueRank="Array" ArrayDimensions="{{ dims | join(',') }}"
         {%- endif -%}
       >
         <opc:Description>{{ var.description }}</opc:Description>
       </opc:Property>
     {%- when ObjectTypeChild::Object with (object) %}
       <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}"
-        {%- if let Some(modelling_rule) = object.modelling_rule -%}
-          {# Keep a whitespace #} ModellingRule="{{ modelling_rule }}"
+        {%- if let Some(modelling_rule) = object.modelling_rule %} ModellingRule="{{ modelling_rule }}"
         {%- endif -%}
       >
         {%- if let Some(browse_name) = object.browse_name() %}

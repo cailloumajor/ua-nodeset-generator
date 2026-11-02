@@ -68,13 +68,21 @@ pub struct ObjectType {
     pub description: String,
     /// Name of the ObjectType this one derives from, prefixed for an ObjectType of a
     /// dependency (e.g. `prefix:DeviceType`). Defaults to `BaseObjectType`.
-    pub base_type: Option<String>,
+    base_type: Option<String>,
     /// Whether the ObjectType is abstract, i.e. cannot be instantiated.
     #[serde(default)]
     pub is_abstract: bool,
     /// Children of the ObjectType, in declaration order.
     #[serde(default)]
     pub children: Vec<ObjectTypeChild>,
+}
+
+impl ObjectType {
+    /// Return the name of the ObjectType this one derives from, `ua:BaseObjectType` if
+    /// not provided.
+    pub fn base_type(&self) -> &str {
+        self.base_type.as_deref().unwrap_or("ua:BaseObjectType")
+    }
 }
 
 /// A child of an ObjectType.
