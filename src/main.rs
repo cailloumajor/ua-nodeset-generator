@@ -107,14 +107,14 @@ fn main() -> anyhow::Result<()> {
     let (ns_dependencies, dependencies_nodeset_paths): (Vec<_>, Vec<_>) = namespace
         .dependencies
         .into_iter()
-        .map(|(key, dep_path)| {
-            let dep_description = Namespace::from_yaml_file(target_dir.join(&dep_path))
-                .with_context(|| {
-                    format!(
-                        "Failed to get dependency description from {}",
-                        dep_path.display()
-                    )
-                })?;
+        .map(|(key, path)| {
+            let dep_path = target_dir.join(path);
+            let dep_description = Namespace::from_yaml_file(&dep_path).with_context(|| {
+                format!(
+                    "Failed to get dependency description from {}",
+                    dep_path.display()
+                )
+            })?;
             let prefix = dep_path
                 .file_stem()
                 .with_context(|| {
@@ -127,9 +127,7 @@ fn main() -> anyhow::Result<()> {
                 .into_owned();
 
             // The NodeSet file of the dependency is generated next to its description file.
-            let nodeset_path = target_dir
-                .join(&dep_path)
-                .with_file_name(format!("{prefix}.NodeSet2.xml"));
+            let nodeset_path = dep_path.with_file_name(format!("{prefix}.NodeSet2.xml"));
 
             let dependency = NsDependency {
                 xml_prefix: key,
