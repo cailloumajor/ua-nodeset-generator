@@ -175,7 +175,7 @@
     <DisplayName>IdentificationType</DisplayName>
     <Description>Identification data of a physical item</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1003</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
   </UAObjectType>
@@ -183,17 +183,17 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1002</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=1004" BrowseName="1:PortType">
     <DisplayName>PortType</DisplayName>
     <Description>Represents a handshake port between an equipment and a supervisor</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1005</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1006</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1006</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1007</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
@@ -202,25 +202,25 @@
     <DisplayName>Command</DisplayName>
     <Description>Command from the equipment to the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1006" BrowseName="1:Status" ParentNodeId="ns=1;i=1004" DataType="Byte" AccessLevel="3">
     <DisplayName>Status</DisplayName>
     <Description>Status from the supervisor to the equipment</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1007" BrowseName="1:Identification" ParentNodeId="ns=1;i=1004">
     <DisplayName>Identification</DisplayName>
     <Description>Identification of the item at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1008</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1002</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
@@ -230,16 +230,16 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1007</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=1009" BrowseName="1:EquipmentType">
     <DisplayName>EquipmentType</DisplayName>
     <Description>Represents an equipment of the production line</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1010</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1011</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1016</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
@@ -249,17 +249,17 @@
     <DisplayName>IsAlive</DisplayName>
     <Description>Sign of life of the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1011" BrowseName="1:&lt;Port&gt;" SymbolicName="Port" ParentNodeId="ns=1;i=1009">
     <DisplayName>&lt;Port&gt;</DisplayName>
     <Description>Ports of the equipment</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1012</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1013</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1012</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1013</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1014</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1004</Reference>
       <Reference ReferenceType="HasModellingRule">i=11508</Reference>
@@ -270,25 +270,25 @@
     <DisplayName>Command</DisplayName>
     <Description>Command from the equipment to the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1011</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1013" BrowseName="1:Status" ParentNodeId="ns=1;i=1011" DataType="Byte" AccessLevel="3">
     <DisplayName>Status</DisplayName>
     <Description>Status from the supervisor to the equipment</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1011</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1014" BrowseName="1:Identification" ParentNodeId="ns=1;i=1011">
     <DisplayName>Identification</DisplayName>
     <Description>Identification of the item at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1015</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1015</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1002</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1011</Reference>
@@ -298,16 +298,16 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1014</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1014</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1016" BrowseName="1:Nameplate" ParentNodeId="ns=1;i=1009">
     <DisplayName>Nameplate</DisplayName>
     <Description>Identification of the equipment</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1017</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1002</Reference>
       <Reference ReferenceType="HasModellingRule">i=80</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1009</Reference>
@@ -317,18 +317,18 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1016</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1016</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=1018" BrowseName="1:MotorizedEquipmentType">
     <DisplayName>MotorizedEquipmentType</DisplayName>
     <Description>Represents an equipment driven by a motor</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1019</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1020</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1021</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1019</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1020</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1021</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">ns=1;i=1009</Reference>
     </References>
   </UAObjectType>
@@ -336,27 +336,27 @@
     <DisplayName>MotorSpeed</DisplayName>
     <Description>Motor speed in rpm</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1018</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1020" BrowseName="1:SpeedSetpoint" ParentNodeId="ns=1;i=1018" DataType="Float" AccessLevel="2">
     <DisplayName>SpeedSetpoint</DisplayName>
     <Description>Motor speed setpoint in rpm</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1018</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1021" BrowseName="1:WindingTemperatures" ParentNodeId="ns=1;i=1018" DataType="Int32" ValueRank="1" ArrayDimensions="3,2">
     <DisplayName>WindingTemperatures</DisplayName>
     <Description>Winding temperatures in °C, for 3 phases, 2 sensors each</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1018</Reference>
     </References>
   </UAVariable>
 </UANodeSet>

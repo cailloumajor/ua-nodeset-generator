@@ -171,8 +171,8 @@
     <DisplayName>PalletPayloadType</DisplayName>
     <Description>Represents a pallet carried through a port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1002</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1003</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1002</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1003</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">ns=2;i=1001</Reference>
     </References>
   </UAObjectType>
@@ -180,25 +180,25 @@
     <DisplayName>PalletNumber</DisplayName>
     <Description>Number of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1003" BrowseName="1:Destinations" ParentNodeId="ns=1;i=1001" DataType="UInt16" ValueRank="1" ArrayDimensions="8" AccessLevel="3">
     <DisplayName>Destinations</DisplayName>
     <Description>Successive destinations of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1001</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1001</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=1004" BrowseName="1:BarcodeReaderType">
     <DisplayName>BarcodeReaderType</DisplayName>
     <Description>Represents a barcode reader</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1005</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1005</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
   </UAObjectType>
@@ -206,9 +206,9 @@
     <DisplayName>LastCode</DisplayName>
     <Description>Last barcode read</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1004</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1004</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId="ns=1;i=1006" BrowseName="1:PalletPortType">
@@ -223,8 +223,8 @@
     <DisplayName>Payload</DisplayName>
     <Description>Pallet at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1008</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1009</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1008</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1009</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1001</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1006</Reference>
@@ -234,27 +234,27 @@
     <DisplayName>PalletNumber</DisplayName>
     <Description>Number of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1007</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1009" BrowseName="1:Destinations" ParentNodeId="ns=1;i=1007" DataType="UInt16" ValueRank="1" ArrayDimensions="8" AccessLevel="3">
     <DisplayName>Destinations</DisplayName>
     <Description>Successive destinations of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1007</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1007</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1010" BrowseName="1:Station1">
     <DisplayName>Station1</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1011</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1014</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1015</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1016</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1011</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1014</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1015</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1016</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1017</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1027</Reference>
       <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
@@ -265,39 +265,39 @@
     <DisplayName>IsAlive</DisplayName>
     <Description>Sign of life of the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1014" BrowseName="2:MotorSpeed" ParentNodeId="ns=1;i=1010" DataType="Double">
     <DisplayName>MotorSpeed</DisplayName>
     <Description>Motor speed in rpm</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1015" BrowseName="2:SpeedSetpoint" ParentNodeId="ns=1;i=1010" DataType="Float" AccessLevel="2">
     <DisplayName>SpeedSetpoint</DisplayName>
     <Description>Motor speed setpoint in rpm</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1016" BrowseName="2:WindingTemperatures" ParentNodeId="ns=1;i=1010" DataType="Int32" ValueRank="1" ArrayDimensions="3,2">
     <DisplayName>WindingTemperatures</DisplayName>
     <Description>Winding temperatures in °C, for 3 phases, 2 sensors each</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1010</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1010</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1017" BrowseName="1:InputPort" ParentNodeId="ns=1;i=1010">
     <DisplayName>InputPort</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1018</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1019</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1018</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1019</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1020</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1022</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1025</Reference>
@@ -309,23 +309,23 @@
     <DisplayName>Command</DisplayName>
     <Description>Command from the equipment to the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1017</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1019" BrowseName="2:Status" ParentNodeId="ns=1;i=1017" DataType="Byte" AccessLevel="3">
     <DisplayName>Status</DisplayName>
     <Description>Status from the supervisor to the equipment</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1017</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1017</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1020" BrowseName="2:Identification" ParentNodeId="ns=1;i=1017">
     <DisplayName>Identification</DisplayName>
     <Description>Identification of the item at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1021</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1021</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=2;i=1002</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1017</Reference>
     </References>
@@ -334,16 +334,16 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1020</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1020</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1022" BrowseName="1:Payload" ParentNodeId="ns=1;i=1017">
     <DisplayName>Payload</DisplayName>
     <Description>Pallet at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1023</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1024</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1023</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1024</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1001</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1017</Reference>
     </References>
@@ -352,22 +352,22 @@
     <DisplayName>PalletNumber</DisplayName>
     <Description>Number of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1022</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1022</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1024" BrowseName="1:Destinations" ParentNodeId="ns=1;i=1022" DataType="UInt16" ValueRank="1" ArrayDimensions="8" AccessLevel="3">
     <DisplayName>Destinations</DisplayName>
     <Description>Successive destinations of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1022</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1022</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1025" BrowseName="1:BarcodeReader" ParentNodeId="ns=1;i=1017">
     <DisplayName>BarcodeReader</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1026</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1026</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1004</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1017</Reference>
     </References>
@@ -376,15 +376,15 @@
     <DisplayName>LastCode</DisplayName>
     <Description>Last barcode read</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1025</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1025</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1027" BrowseName="1:OutputPort" ParentNodeId="ns=1;i=1010">
     <DisplayName>OutputPort</DisplayName>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1028</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1029</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1028</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1029</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1030</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1032</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1006</Reference>
@@ -395,23 +395,23 @@
     <DisplayName>Command</DisplayName>
     <Description>Command from the equipment to the supervisor</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1027</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1027</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1029" BrowseName="2:Status" ParentNodeId="ns=1;i=1027" DataType="Byte" AccessLevel="3">
     <DisplayName>Status</DisplayName>
     <Description>Status from the supervisor to the equipment</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1027</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1027</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1030" BrowseName="2:Identification" ParentNodeId="ns=1;i=1027">
     <DisplayName>Identification</DisplayName>
     <Description>Identification of the item at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1031</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1031</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=2;i=1002</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1027</Reference>
     </References>
@@ -420,16 +420,16 @@
     <DisplayName>SerialNumber</DisplayName>
     <Description>Serial number of the item</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1030</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1030</Reference>
     </References>
   </UAVariable>
   <UAObject NodeId="ns=1;i=1032" BrowseName="1:Payload" ParentNodeId="ns=1;i=1027">
     <DisplayName>Payload</DisplayName>
     <Description>Pallet at the port</Description>
     <References>
-      <Reference ReferenceType="HasProperty">ns=1;i=1033</Reference>
-      <Reference ReferenceType="HasProperty">ns=1;i=1034</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1033</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=1034</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1001</Reference>
       <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1027</Reference>
     </References>
@@ -438,16 +438,16 @@
     <DisplayName>PalletNumber</DisplayName>
     <Description>Number of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1032</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1032</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=1034" BrowseName="1:Destinations" ParentNodeId="ns=1;i=1032" DataType="UInt16" ValueRank="1" ArrayDimensions="8" AccessLevel="3">
     <DisplayName>Destinations</DisplayName>
     <Description>Successive destinations of the pallet</Description>
     <References>
-      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=1032</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=1032</Reference>
     </References>
   </UAVariable>
 </UANodeSet>

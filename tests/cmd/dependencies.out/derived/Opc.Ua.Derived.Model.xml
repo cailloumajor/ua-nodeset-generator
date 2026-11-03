@@ -60,21 +60,21 @@
   <opc:ObjectType SymbolicName="PalletPayloadType" BaseType="base:PayloadType">
     <opc:Description>Represents a pallet carried through a port</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="PalletNumber" DataType="ua:UInt16" AccessLevel="ReadWrite">
+      <opc:Variable SymbolicName="PalletNumber" DataType="ua:UInt16" AccessLevel="ReadWrite">
         <opc:Description>Number of the pallet</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="Destinations" DataType="ua:UInt16" AccessLevel="ReadWrite" ValueRank="Array" ArrayDimensions="8">
+      </opc:Variable>
+      <opc:Variable SymbolicName="Destinations" DataType="ua:UInt16" AccessLevel="ReadWrite" ValueRank="Array" ArrayDimensions="8">
         <opc:Description>Successive destinations of the pallet</opc:Description>
-      </opc:Property>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 
   <opc:ObjectType SymbolicName="BarcodeReaderType" BaseType="ua:BaseObjectType">
     <opc:Description>Represents a barcode reader</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="LastCode" DataType="ua:String" AccessLevel="Read">
+      <opc:Variable SymbolicName="LastCode" DataType="ua:String" AccessLevel="Read">
         <opc:Description>Last barcode read</opc:Description>
-      </opc:Property>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 

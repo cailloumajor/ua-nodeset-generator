@@ -62,21 +62,21 @@
   <opc:ObjectType SymbolicName="IdentificationType" BaseType="ua:BaseObjectType">
     <opc:Description>Identification data of a physical item</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="SerialNumber" DataType="ua:String" AccessLevel="ReadWrite">
+      <opc:Variable SymbolicName="SerialNumber" DataType="ua:String" AccessLevel="ReadWrite">
         <opc:Description>Serial number of the item</opc:Description>
-      </opc:Property>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 
   <opc:ObjectType SymbolicName="PortType" BaseType="ua:BaseObjectType">
     <opc:Description>Represents a handshake port between an equipment and a supervisor</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="Command" DataType="ua:Byte" AccessLevel="Read">
+      <opc:Variable SymbolicName="Command" DataType="ua:Byte" AccessLevel="Read">
         <opc:Description>Command from the equipment to the supervisor</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="Status" DataType="ua:Byte" AccessLevel="ReadWrite">
+      </opc:Variable>
+      <opc:Variable SymbolicName="Status" DataType="ua:Byte" AccessLevel="ReadWrite">
         <opc:Description>Status from the supervisor to the equipment</opc:Description>
-      </opc:Property>
+      </opc:Variable>
       <opc:Object SymbolicName="Identification" TypeDefinition="IdentificationType">
         <opc:Description>Identification of the item at the port</opc:Description>
       </opc:Object>
@@ -86,9 +86,9 @@
   <opc:ObjectType SymbolicName="EquipmentType" BaseType="ua:BaseObjectType">
     <opc:Description>Represents an equipment of the production line</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="IsAlive" DataType="ua:Boolean" AccessLevel="ReadWrite">
+      <opc:Variable SymbolicName="IsAlive" DataType="ua:Boolean" AccessLevel="ReadWrite">
         <opc:Description>Sign of life of the supervisor</opc:Description>
-      </opc:Property>
+      </opc:Variable>
       <opc:Object SymbolicName="Port" TypeDefinition="PortType" ModellingRule="OptionalPlaceholder">
         <opc:BrowseName>&#60;Port&#62;</opc:BrowseName>
         <opc:Description>Ports of the equipment</opc:Description>
@@ -102,15 +102,15 @@
   <opc:ObjectType SymbolicName="MotorizedEquipmentType" BaseType="EquipmentType">
     <opc:Description>Represents an equipment driven by a motor</opc:Description>
     <opc:Children>
-      <opc:Property SymbolicName="MotorSpeed" DataType="ua:Double" AccessLevel="Read">
+      <opc:Variable SymbolicName="MotorSpeed" DataType="ua:Double" AccessLevel="Read">
         <opc:Description>Motor speed in rpm</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="SpeedSetpoint" DataType="ua:Float" AccessLevel="Write">
+      </opc:Variable>
+      <opc:Variable SymbolicName="SpeedSetpoint" DataType="ua:Float" AccessLevel="Write">
         <opc:Description>Motor speed setpoint in rpm</opc:Description>
-      </opc:Property>
-      <opc:Property SymbolicName="WindingTemperatures" DataType="ua:Int32" AccessLevel="Read" ValueRank="Array" ArrayDimensions="3,2">
+      </opc:Variable>
+      <opc:Variable SymbolicName="WindingTemperatures" DataType="ua:Int32" AccessLevel="Read" ValueRank="Array" ArrayDimensions="3,2">
         <opc:Description>Winding temperatures in °C, for 3 phases, 2 sensors each</opc:Description>
-      </opc:Property>
+      </opc:Variable>
     </opc:Children>
   </opc:ObjectType>
 
