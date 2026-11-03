@@ -296,6 +296,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1017" BrowseName="1:InputPort" ParentNodeId="ns=1;i=1010">
     <DisplayName>InputPort</DisplayName>
+    <Description>Input port</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1018</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1019</Reference>
@@ -367,6 +368,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1025" BrowseName="1:BarcodeReader" ParentNodeId="ns=1;i=1017">
     <DisplayName>BarcodeReader</DisplayName>
+    <Description>Bar code reader</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1026</Reference>
       <Reference ReferenceType="HasTypeDefinition">ns=1;i=1004</Reference>
@@ -383,6 +385,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1027" BrowseName="1:OutputPort" ParentNodeId="ns=1;i=1010">
     <DisplayName>OutputPort</DisplayName>
+    <Description>Output port</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1028</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1029</Reference>

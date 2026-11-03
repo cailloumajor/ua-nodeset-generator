@@ -2,13 +2,12 @@
 {%- if !objects.is_empty() %}
 <opc:Children>
   {%- for object in objects.iter() %}
-    {%- if object.objects.is_empty() %}
-  <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}"/>
-    {%- else %}
   <opc:Object SymbolicName="{{ object.name }}" TypeDefinition="{{ object.object_type }}">
+    <opc:Description>{{ object.description }}</opc:Description>
+    {%- if !object.objects.is_empty() %}
       {{- self.nested(object.objects.as_slice()) | indent(4) | safe }}
-  </opc:Object>
     {%- endif %}
+  </opc:Object>
   {%- endfor %}
 </opc:Children>
 {%- endif %}

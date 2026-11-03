@@ -91,11 +91,16 @@
     <opc:Description>First station</opc:Description>
     <opc:Children>
       <opc:Object SymbolicName="InputPort" TypeDefinition="PalletPortType">
+        <opc:Description>Input port</opc:Description>
         <opc:Children>
-          <opc:Object SymbolicName="BarcodeReader" TypeDefinition="BarcodeReaderType"/>
+          <opc:Object SymbolicName="BarcodeReader" TypeDefinition="BarcodeReaderType">
+            <opc:Description>Bar code reader</opc:Description>
+          </opc:Object>
         </opc:Children>
       </opc:Object>
-      <opc:Object SymbolicName="OutputPort" TypeDefinition="PalletPortType"/>
+      <opc:Object SymbolicName="OutputPort" TypeDefinition="PalletPortType">
+        <opc:Description>Output port</opc:Description>
+      </opc:Object>
     </opc:Children>
     <opc:References>
       <opc:Reference IsInverse="true">
