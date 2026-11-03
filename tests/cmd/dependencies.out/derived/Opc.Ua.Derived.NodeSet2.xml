@@ -250,6 +250,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1010" BrowseName="1:Station1">
     <DisplayName>Station1</DisplayName>
+    <Description>First station</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1011</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1014</Reference>

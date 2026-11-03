@@ -6,5 +6,6 @@ publication_date: 2020-01-01T00:00:00Z
 
 root_elements:
   - type: object_instance
+    description: Deliberate type orphan instance for tests
     name: Orphan
     object_type: UndefinedType

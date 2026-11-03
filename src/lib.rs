@@ -205,6 +205,8 @@ pub enum ModellingRule {
 pub struct ObjectInstance {
     /// Name of the object instance.
     pub name: String,
+    /// Description of the object instance.
+    pub description: String,
     /// Name of the ObjectType of this instance, prefixed for an ObjectType of a
     /// dependency (e.g. `prefix:MotorType`).
     pub object_type: String,

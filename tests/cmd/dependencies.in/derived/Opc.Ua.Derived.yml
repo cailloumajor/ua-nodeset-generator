@@ -44,12 +44,16 @@ root_elements:
         object_type: PalletPayloadType
   - type: object_instance
     name: Station1
+    description: First station
     object_type: base:MotorizedEquipmentType
     objects:
       - name: InputPort
+        description: Input port
         object_type: PalletPortType
         objects:
           - name: BarcodeReader
+            description: Bar code reader
             object_type: BarcodeReaderType
       - name: OutputPort
+        description: Output port
         object_type: PalletPortType

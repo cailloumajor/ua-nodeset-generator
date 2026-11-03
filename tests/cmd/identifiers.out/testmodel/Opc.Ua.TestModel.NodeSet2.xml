@@ -250,6 +250,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1009" BrowseName="1:GlobalConveyorBelt">
     <DisplayName>GlobalConveyorBelt</DisplayName>
+    <Description>Global conveyor belt</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1010</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1018</Reference>
@@ -293,6 +294,7 @@
   </UAVariable>
   <UAObject NodeId="ns=1;i=1013" BrowseName="1:TheUniqueMotor">
     <DisplayName>TheUniqueMotor</DisplayName>
+    <Description>The famous only one motor</Description>
     <References>
       <Reference ReferenceType="HasComponent">ns=1;i=1014</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=1015</Reference>

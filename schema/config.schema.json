@@ -172,6 +172,10 @@
             "description": "ObjectType instance description.",
             "type": "object",
             "properties": {
+              "description": {
+                "description": "Description of the object instance.",
+                "type": "string"
+              },
               "name": {
                 "description": "Name of the object instance.",
                 "type": "string"
@@ -196,6 +200,7 @@
             "required": [
               "type",
               "name",
+              "description",
               "object_type"
             ]
           }
@@ -238,6 +243,10 @@
       "description": "Source description of an instance of an ObjectType.\n\nAn instance at the root of the namespace is organized in the `Objects` folder,\nother instances are components of their parent instance.",
       "type": "object",
       "properties": {
+        "description": {
+          "description": "Description of the object instance.",
+          "type": "string"
+        },
         "name": {
           "description": "Name of the object instance.",
           "type": "string"
@@ -257,6 +266,7 @@
       "additionalProperties": false,
       "required": [
         "name",
+        "description",
         "object_type"
       ]
     },

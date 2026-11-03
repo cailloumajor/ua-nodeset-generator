@@ -57,6 +57,7 @@ other instances are components of their parent instance.
 
 | Property | Type | Required | Possible values | Description |
 | -------- | ---- | -------- | --------------- | ----------- |
+| description | `string` | ✅ | string | Description of the object instance. |
 | name | `string` | ✅ | string | Name of the object instance. |
 | object_type | `string` | ✅ | string | Name of the ObjectType of this instance, prefixed for an ObjectType of a<br />dependency (e.g. `prefix:MotorType`). |
 | objects | `array` |  | [ObjectInstance](#objectinstance) | Object instances to add to this instance, as components. |
@@ -131,6 +132,7 @@ ObjectType instance description.
 
 | Property | Type | Required | Possible values | Description |
 | -------- | ---- | -------- | --------------- | ----------- |
+| description | `string` | ✅ | string | Description of the object instance. |
 | name | `string` | ✅ | string | Name of the object instance. |
 | object_type | `string` | ✅ | string | Name of the ObjectType of this instance, prefixed for an ObjectType of a<br />dependency (e.g. `prefix:MotorType`). |
 | type | `const` | ✅ | `object_instance` |  |

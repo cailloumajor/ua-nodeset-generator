@@ -52,7 +52,9 @@ root_elements:
         array_dimensions: [10]
   - type: object_instance
     name: GlobalConveyorBelt
+    description: Global conveyor belt
     object_type: ConveyorBeltType
   - type: object_instance
     name: TheUniqueMotor
+    description: The famous only one motor
     object_type: MotorType

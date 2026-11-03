@@ -99,6 +99,7 @@
     {%- when RootElement::ObjectInstance with (object_instance) %}
 
   <opc:Object SymbolicName="{{ object_instance.name }}" TypeDefinition="{{ object_instance.object_type }}">
+    <opc:Description>{{ object_instance.description }}</opc:Description>
       {{- self.instance_children(object_instance.objects.as_slice()) | indent(4) | safe }}
     <opc:References>
       <opc:Reference IsInverse="true">

@@ -88,6 +88,7 @@
   </opc:ObjectType>
 
   <opc:Object SymbolicName="Station1" TypeDefinition="base:MotorizedEquipmentType">
+    <opc:Description>First station</opc:Description>
     <opc:Children>
       <opc:Object SymbolicName="InputPort" TypeDefinition="PalletPortType">
         <opc:Children>
