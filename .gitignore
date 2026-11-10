@@ -2,3 +2,6 @@
 
 # Mise local configuration
 mise.local.toml
+
+# Python documentation generator environment
+.config/config-doc/.venv/
