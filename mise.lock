@@ -3,50 +3,50 @@
 lockfile_version = 3
 
 [[tools.betterleaks]]
-version = "1.9.0"
+version = "1.10.0"
 backend = "aqua:betterleaks/betterleaks"
 specifiers = ["latest"]
 
 [tools.betterleaks."platforms.linux-arm64"]
-checksum = "sha256:1d39116e0a58dc94574715e2aa12a2dbd5062f193eee3fec011fef6ba06bd13b"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108932"
+checksum = "sha256:3d7585cbe4f947aef6e31662f65beb5b43b104381a691b6b81b157ebfbb0c02d"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841284"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.linux-arm64-musl"]
-checksum = "sha256:1d39116e0a58dc94574715e2aa12a2dbd5062f193eee3fec011fef6ba06bd13b"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108932"
+checksum = "sha256:3d7585cbe4f947aef6e31662f65beb5b43b104381a691b6b81b157ebfbb0c02d"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841284"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.linux-x64"]
-checksum = "sha256:f8b185a39ffcece2a1ca82bf3a4e7435cd81963ffd16b7a9128daf75f35f6de7"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108929"
+checksum = "sha256:9d9ad503cd5d80d18a939352266c3fcca52f10da9b83cd5cfe646989b13940fe"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841396"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.linux-x64-musl"]
-checksum = "sha256:f8b185a39ffcece2a1ca82bf3a4e7435cd81963ffd16b7a9128daf75f35f6de7"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_linux_x64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108929"
+checksum = "sha256:9d9ad503cd5d80d18a939352266c3fcca52f10da9b83cd5cfe646989b13940fe"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_linux_x64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841396"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.macos-arm64"]
-checksum = "sha256:83dd7eaab13d44a1e8e347a17064cdef153a1478db473276d41b38d55613d3f2"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108927"
+checksum = "sha256:91eaea97709d3308c7712574a56260539c65fbd0672711537aa68d566ea630b3"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841276"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.macos-x64"]
-checksum = "sha256:68dfd83458d9e7f90663daa7a81c7f944083b170dae82e4f5f8d0581ed519ef1"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_darwin_x64.tar.gz"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108931"
+checksum = "sha256:71b3f30602856e622008c248b1b47b2ba15b227f4a033e8bfdfa05a21ec7d531"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_darwin_x64.tar.gz"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841277"
 provenance = "cosign"
 
 [tools.betterleaks."platforms.windows-x64"]
-checksum = "sha256:b765daec9fda475b031b5a5159798cbe4294a3f2a50683cbc0471226e376d3da"
-url = "https://github.com/betterleaks/betterleaks/releases/download/v1.9.0/betterleaks_1.9.0_windows_x64.zip"
-url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/599108997"
+checksum = "sha256:bafd52abcb440c2a06ea36d5e1fff217315db0aac517e60d74e64b2bb9f18468"
+url = "https://github.com/betterleaks/betterleaks/releases/download/v1.10.0/betterleaks_1.10.0_windows_x64.zip"
+url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/710841275"
 provenance = "cosign"
 
 [[tools.dotnet]]
@@ -183,49 +183,49 @@ signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [[tools.jactionlint]]
-version = "2.4.0"
+version = "2.5.0"
 backend = "packslip:github.com/jdx/jactionlint"
 specifiers = ["latest"]
 
 [tools.jactionlint."platforms.linux-arm64"]
-checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
+checksum = "sha256:ad7e33b6264cea16b7e83ad2bb004824d5b1c15aedb35ba0dc84917f791c5525"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-arm64-musl"]
-checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
+checksum = "sha256:ad7e33b6264cea16b7e83ad2bb004824d5b1c15aedb35ba0dc84917f791c5525"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:5ac307b0499bb0eab45ae99c23e8e0790874fbc667c75224410954e0e3c6e0f5"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-musl"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:5ac307b0499bb0eab45ae99c23e8e0790874fbc667c75224410954e0e3c6e0f5"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-arm64"]
-checksum = "sha256:349a13dbffdd25376898a256d195806afda08ba97ccc6378cbf2dd11a77ef8e7"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_arm64.tar.gz"
+checksum = "sha256:15b47d53e3b1aafbd674cca0e8fff0d5952f3cf2a7d7501a8f67576ef76397b4"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_darwin_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-x64"]
-checksum = "sha256:4c21fce834f8267b65a65b32a527aaa2ec1c321c8f066d44b42d7f038835aa90"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_amd64.tar.gz"
+checksum = "sha256:f8f10def21260aa9515974f0aa145f5a6741efd60efe1f880c8c6f53a4ba676c"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_darwin_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.windows-x64"]
-checksum = "sha256:4e0c7b428a4faa35bb3b86af6fa65a0ac9797edcd4c64e4f7e16ca886437e172"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_windows_amd64.zip"
+checksum = "sha256:6f6202d6fc476cbe3978c7dd2349c881cfcfa98257593cb2f1bde87004f054c6"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.5.0/jactionlint_2.5.0_windows_amd64.zip"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
@@ -309,51 +309,45 @@ backend = "npm:yaml-language-server"
 specifiers = ["latest"]
 
 [[tools.pkl]]
-version = "0.32.2"
+version = "0.33.0"
 backend = "aqua:apple/pkl"
 specifiers = ["latest"]
 
 [tools.pkl."platforms.linux-arm64"]
-checksum = "sha256:e60744e17d4ddc0257a35260998b5f98387b5d6a5e868317cccfbebe8d962ae3"
+checksum = "sha256:edcea361402ecab0f3a93f86b1a896c41d00a9241f4962f70278254b08fbd26d"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-linux-aarch64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850794"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-linux-aarch64"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714756970"
 
 [tools.pkl."platforms.linux-arm64-musl"]
-checksum = "sha256:e60744e17d4ddc0257a35260998b5f98387b5d6a5e868317cccfbebe8d962ae3"
+checksum = "sha256:edcea361402ecab0f3a93f86b1a896c41d00a9241f4962f70278254b08fbd26d"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-linux-aarch64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850794"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-linux-aarch64"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714756970"
 
 [tools.pkl."platforms.linux-x64"]
-checksum = "sha256:874c75484c79add77fb2346ea4ab2e8875eea35fb707894bf5457a2df5d03def"
+checksum = "sha256:b9a6ddea6b382b7d4db4cf78e77aa3858e0c8a7e02939d2ba298574b5d1fcc69"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-linux-amd64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850808"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-linux-amd64"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714756975"
 
 [tools.pkl."platforms.linux-x64-musl"]
-checksum = "sha256:874c75484c79add77fb2346ea4ab2e8875eea35fb707894bf5457a2df5d03def"
+checksum = "sha256:b9a6ddea6b382b7d4db4cf78e77aa3858e0c8a7e02939d2ba298574b5d1fcc69"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-linux-amd64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850808"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-linux-amd64"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714756975"
 
 [tools.pkl."platforms.macos-arm64"]
-checksum = "sha256:466952f0b30c93dfa36393a5b3695159917ce4291e3c936a18a0a240cfbe98e9"
+checksum = "sha256:e39c157df0f00a35d34b46270a768784edcaf509aafbf743849b27b4c83ef83b"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-macos-aarch64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850972"
-
-[tools.pkl."platforms.macos-x64"]
-checksum = "sha256:3c4c914a75210d3f3292740b4a8d447f9f832e81b60720bec57221e884717eee"
-checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-macos-amd64"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663850987"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-macos-aarch64"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714757040"
 
 [tools.pkl."platforms.windows-x64"]
-checksum = "sha256:ac3c55c2e43c20964dc5faf51e47bf73a90150dfe1874aa37753651753edf201"
+checksum = "sha256:9875af0d17d3535ed0e3903f3ae71fc8007268949328f73c2d12942fca11840c"
 checksum_source = "mise-versions"
-url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-windows-amd64.exe"
-url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663854370"
+url = "https://github.com/apple/pkl/releases/download/0.33.0/pkl-windows-amd64.exe"
+url_api = "https://api.github.com/repos/apple/pkl/releases/assets/714757051"
 
 [[tools.rumdl]]
 version = "0.3.2"
@@ -452,50 +446,50 @@ url = "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellche
 url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/279056944"
 
 [[tools.tombi]]
-version = "1.9.9"
+version = "1.11.1"
 backend = "aqua:tombi-toml/tombi"
 specifiers = ["latest"]
 
 [tools.tombi."platforms.linux-arm64"]
-checksum = "sha256:a3ce42ce0825c3ff8c054e443dd8ded013ec5a708bba02e7b4a537b287c75734"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748395"
+checksum = "sha256:df98bd2067cc97f12e1c92b9a916ed0a6515cda643b31785887c78612fcd15e0"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632065"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-arm64-musl"]
-checksum = "sha256:a3ce42ce0825c3ff8c054e443dd8ded013ec5a708bba02e7b4a537b287c75734"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748395"
+checksum = "sha256:df98bd2067cc97f12e1c92b9a916ed0a6515cda643b31785887c78612fcd15e0"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632065"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-x64"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:20ad530e4878c8214e40e14e92623fd2ef244254a397a5cab29137f9076c156e"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632125"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.linux-x64-musl"]
-checksum = "sha256:f6094fb14fd962c9611ccd7bc73dc7e8b03fe8859fd662e022b8d0a25649b5fc"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748434"
+checksum = "sha256:20ad530e4878c8214e40e14e92623fd2ef244254a397a5cab29137f9076c156e"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632125"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.macos-arm64"]
-checksum = "sha256:3e156ba88ae4228b93071d9a4548e6dd64ae0e71d476ae09ee106a0d9a6ca070"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748394"
+checksum = "sha256:c14d4dbe7e0f8887a0090a91362ce3e46aa61002f879ff1728e8607f1c573197"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632070"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.macos-x64"]
-checksum = "sha256:6d7d545c4f33fb7e0547b31f6e0b23bffed801f9a58664563fd9e5df10f52802"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748396"
+checksum = "sha256:3130e3cdae621f09c730a19c725b7302463310fd5868362a7241ff9cdf370251"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632067"
 provenance = "github-attestations"
 
 [tools.tombi."platforms.windows-x64"]
-checksum = "sha256:fe5ac50c502f40e3f0da3f725c47fea05716afd5785badeca04966043d6b85d2"
-url = "https://github.com/tombi-toml/tombi/releases/download/v1.9.9/tombi-cli-1.9.9-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/703748428"
+checksum = "sha256:a12a12dd8cae4199b67b24480f6523859c94e6af1de1f1ef0df81a3da37e4480"
+url = "https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/tombi-toml/tombi/releases/assets/725632121"
 provenance = "github-attestations"
 
 [[tools.typos]]
