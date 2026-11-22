@@ -145,6 +145,7 @@ url_api = "https://api.github.com/repos/mhersson/mpls/releases/assets/574698529"
 version = "2.13.0"
 backend = "packslip:github.com/jdx/hk"
 specifiers = ["latest"]
+unsupported_platforms = ["macos-x64"]
 
 [tools.hk."platforms.linux-arm64"]
 checksum = "sha256:490196a4e638991c671f42941d72ade4d00b14750145f34fc64377b49fc070bb"
@@ -304,7 +305,7 @@ url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip"
 
 [[tools."npm:yaml-language-server"]]
 version = "2.0.0"
-aube = { path = ".mise/locks/npm-yaml-language-server/2.0.0", digest = "sha256:c3af71936aec4dd7835182cd5072c200f346781557fafa6bc5b2eee0f4904a3a" }
+aube = { path = ".mise/locks/npm-yaml-language-server/2.0.0", digest = "sha256:535c3c99cef18e2c589ccec0cb0c3d0b26fe315e023f67300449353670588bca" }
 backend = "npm:yaml-language-server"
 specifiers = ["latest"]
 
