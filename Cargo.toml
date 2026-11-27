@@ -22,7 +22,7 @@ anyhow.workspace = true
 askama = "0.16.0"
 clap = { version = "4.6.7", features = ["derive"] }
 duct = "1.1.1"
-jiff = { version = "0.2.37", features = ["serde"] }
+jiff = { version = "1.0.0", features = ["serde"] }
 schemars.workspace = true
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json.workspace = true
